@@ -38,28 +38,34 @@ const sorted = computed(() =>
 
 <template>
     <section v-if="sorted.length" class="translations">
-            <button class="translations-header" @click="expanded = !expanded">
-                <span class="translations-label">This word in other languages</span>
-                <span class="translations-count">{{ sorted.length }}</span>
-                <span class="translations-toggle" :class="{ open: expanded }">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </span>
-            </button>
-            <div v-show="expanded" class="translations-grid">
-                <component
-                    :is="t.href ? 'NuxtLink' : 'span'"
-                    v-for="t in sorted"
-                    :key="t.code"
-                    :to="t.href || undefined"
-                    class="translation-item"
-                    :class="{ linked: !!t.href }"
-                >
-                    <span class="translation-word">{{ t.word }}</span>
-                    <span class="translation-lang">{{ t.name }}</span>
-                </component>
-            </div>
+        <button class="translations-header" @click="expanded = !expanded">
+            <span class="translations-label">This word in other languages</span>
+            <span class="translations-count">{{ sorted.length }}</span>
+            <span class="translations-toggle" :class="{ open: expanded }">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path
+                        d="M3 4.5L6 7.5L9 4.5"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                </svg>
+            </span>
+        </button>
+        <div v-show="expanded" class="translations-grid">
+            <component
+                :is="t.href ? 'NuxtLink' : 'span'"
+                v-for="t in sorted"
+                :key="t.code"
+                :to="t.href || undefined"
+                class="translation-item"
+                :class="{ linked: !!t.href }"
+            >
+                <span class="translation-word">{{ t.word }}</span>
+                <span class="translation-lang">{{ t.name }}</span>
+            </component>
+        </div>
     </section>
 </template>
 
@@ -70,6 +76,7 @@ const sorted = computed(() =>
 .translations-header {
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
     gap: 8px;
     width: 100%;
     padding: 14px 20px;
@@ -87,9 +94,11 @@ const sorted = computed(() =>
     font-size: 9px;
     color: var(--color-muted);
     opacity: 0.6;
+    flex-shrink: 0;
 }
 .translations-toggle {
     margin-left: auto;
+    flex-shrink: 0;
     transition: transform 200ms ease;
 }
 .translations-toggle.open {

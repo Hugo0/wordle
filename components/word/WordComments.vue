@@ -48,21 +48,20 @@ interface CommentEntry {
     badges: Badge[];
 }
 
-const {
-    data: commentData,
-} = await useFetch<{ comments: CommentEntry[]; total: number; hasMore: boolean }>(
-    '/api/comments',
-    {
-        query: {
-            targetType: props.targetType,
-            targetKey: props.targetKey,
-            lang: props.lang || '',
-            appearances: appearancesParam,
-        },
-        watch: [() => props.targetKey],
-        default: () => ({ comments: [], total: 0, hasMore: false }),
+const { data: commentData } = await useFetch<{
+    comments: CommentEntry[];
+    total: number;
+    hasMore: boolean;
+}>('/api/comments', {
+    query: {
+        targetType: props.targetType,
+        targetKey: props.targetKey,
+        lang: props.lang || '',
+        appearances: appearancesParam,
     },
-);
+    watch: [() => props.targetKey],
+    default: () => ({ comments: [], total: 0, hasMore: false }),
+});
 
 const comments = computed(() => commentData.value?.comments ?? []);
 const total = computed(() => commentData.value?.total ?? 0);
@@ -163,11 +162,7 @@ const userInitial = computed(() =>
 
         <!-- Comment list (newest last for reading order) -->
         <div v-if="comments.length > 0" class="comments-list">
-            <div
-                v-for="c in displayComments"
-                :key="c.id"
-                class="comment-item"
-            >
+            <div v-for="c in displayComments" :key="c.id" class="comment-item">
                 <div class="comment-meta">
                     <img
                         v-if="c.avatarUrl"
@@ -188,7 +183,9 @@ const userInitial = computed(() =>
                             class="comment-badge"
                             :class="b.won ? 'badge-won' : 'badge-lost'"
                         >
-                            <span v-if="c.badges.length > 1" class="badge-mode">{{ badgeLabel(b, c.badges) }}</span>
+                            <span v-if="c.badges.length > 1" class="badge-mode">{{
+                                badgeLabel(b, c.badges)
+                            }}</span>
                             {{ badgeText(b) }}
                         </span>
                     </template>
@@ -206,7 +203,12 @@ const userInitial = computed(() =>
             <div v-if="loggedIn" class="comments-empty-subtitle">
                 Be the first to share your thoughts on this word
             </div>
-            <button v-else class="comments-signin-btn" style="margin-top: 8px" @click="openLoginModal()">
+            <button
+                v-else
+                class="comments-signin-btn"
+                style="margin-top: 8px"
+                @click="openLoginModal()"
+            >
                 Sign in to comment
             </button>
         </div>
@@ -240,11 +242,7 @@ const userInitial = computed(() =>
             <div v-if="error" class="comment-error">{{ error }}</div>
             <div class="comment-input-footer">
                 <span class="comment-charcount">{{ draft.length }}/500</span>
-                <button
-                    class="comment-submit"
-                    :disabled="!canPost"
-                    @click="postComment"
-                >
+                <button class="comment-submit" :disabled="!canPost" @click="postComment">
                     <Send :size="12" />
                     {{ posting ? 'Posting...' : 'Post' }}
                 </button>

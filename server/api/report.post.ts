@@ -93,14 +93,30 @@ async function sendNotificationEmail(
     const typeLabel = type === 'report' ? '🐛 Bug Report' : '💬 Feedback';
 
     const contextRows = [
-        body.url ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">URL</td><td style="padding:4px 0">${esc(body.url)}</td></tr>` : '',
-        body.lang ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Language</td><td style="padding:4px 0">${esc(body.lang)}</td></tr>` : '',
-        body.mode ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Mode</td><td style="padding:4px 0">${esc(body.mode)}</td></tr>` : '',
-        body.userAgent ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Browser</td><td style="padding:4px 0;font-size:12px;word-break:break-all">${esc(body.userAgent)}</td></tr>` : '',
-        body.screenSize ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Screen</td><td style="padding:4px 0">${esc(body.screenSize)}</td></tr>` : '',
-        body.isPwa != null ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">PWA</td><td style="padding:4px 0">${body.isPwa ? 'Yes' : 'No'}</td></tr>` : '',
-        username ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">User</td><td style="padding:4px 0">${esc(username)}${email ? ` (${esc(email)})` : ''}</td></tr>` : '<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">User</td><td style="padding:4px 0;color:#999">Guest</td></tr>',
-    ].filter(Boolean).join('\n');
+        body.url
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">URL</td><td style="padding:4px 0">${esc(body.url)}</td></tr>`
+            : '',
+        body.lang
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Language</td><td style="padding:4px 0">${esc(body.lang)}</td></tr>`
+            : '',
+        body.mode
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Mode</td><td style="padding:4px 0">${esc(body.mode)}</td></tr>`
+            : '',
+        body.userAgent
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Browser</td><td style="padding:4px 0;font-size:12px;word-break:break-all">${esc(body.userAgent)}</td></tr>`
+            : '',
+        body.screenSize
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">Screen</td><td style="padding:4px 0">${esc(body.screenSize)}</td></tr>`
+            : '',
+        body.isPwa != null
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">PWA</td><td style="padding:4px 0">${body.isPwa ? 'Yes' : 'No'}</td></tr>`
+            : '',
+        username
+            ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">User</td><td style="padding:4px 0">${esc(username)}${email ? ` (${esc(email)})` : ''}</td></tr>`
+            : '<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap">User</td><td style="padding:4px 0;color:#999">Guest</td></tr>',
+    ]
+        .filter(Boolean)
+        .join('\n');
 
     const html = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px">

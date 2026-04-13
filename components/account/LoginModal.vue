@@ -4,7 +4,9 @@
             <!-- ── Step 1: Main login options ── -->
             <div v-if="step === 'main'" key="main" class="flex flex-col gap-4">
                 <h3 class="heading-section text-xl text-ink">Sign In</h3>
-                <p class="text-sm text-muted -mt-2">Sync your stats across devices and earn badges.</p>
+                <p class="text-sm text-muted -mt-2">
+                    Sync your stats across devices and earn badges.
+                </p>
 
                 <!-- Auth buttons — ordered by platform: passkey first on iOS, Google first elsewhere -->
                 <template v-for="method in authOrder" :key="method">
@@ -108,7 +110,11 @@
                 </div>
                 <h3 class="heading-section text-xl text-ink">{{ successMessage }}</h3>
                 <p class="text-sm text-muted">
-                    {{ isNewAccount ? 'Your passkey has been created.' : 'Signed in with your passkey.' }}
+                    {{
+                        isNewAccount
+                            ? 'Your passkey has been created.'
+                            : 'Signed in with your passkey.'
+                    }}
                 </p>
             </div>
         </Transition>
@@ -141,7 +147,7 @@ const { authenticate, register, isPlatformAvailable } = useWebAuthn({
 // everyone else gets Google first (path of least resistance on Android/desktop)
 const isIOS = ref(false);
 const authOrder = computed<Array<'google' | 'passkey'>>(() =>
-    isIOS.value ? ['passkey', 'google'] : ['google', 'passkey'],
+    isIOS.value ? ['passkey', 'google'] : ['google', 'passkey']
 );
 
 if (import.meta.client) {
@@ -163,7 +169,7 @@ watch(
             error.value = '';
             passkeyLoading.value = false;
         }
-    },
+    }
 );
 
 function goToPasskeyChoice() {

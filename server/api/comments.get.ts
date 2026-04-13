@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
 
     const limit = Math.min(100, Math.max(1, parseInt(query.limit as string, 10) || 50));
     const cursor = query.cursor as string | undefined;
-    const lang = query.lang as string || '';
+    const lang = (query.lang as string) || '';
 
     const appearances = parseAppearances((query.appearances as string) || '');
 
@@ -47,8 +47,8 @@ export default defineEventHandler(async (event) => {
     let paramIdx = 1;
 
     // Base WHERE params
-    params.push(targetType);    // $1
-    params.push(targetKey);     // $2
+    params.push(targetType); // $1
+    params.push(targetKey); // $2
     paramIdx = 3;
 
     if (hasBadges) {

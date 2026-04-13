@@ -40,29 +40,87 @@ PROCESSED_DIR = os.path.join(SCRIPT_DIR, ".kaikki_processed")
 # ---------------------------------------------------------------------------
 
 LANG_CODE_TO_KAIKKI_NAME = {
-    "ar": "Arabic", "az": "Azerbaijani", "bg": "Bulgarian", "br": "Breton",
-    "ca": "Catalan", "ckb": "Central Kurdish", "cs": "Czech", "da": "Danish",
-    "de": "German", "el": "Greek", "en": "English", "eo": "Esperanto",
-    "es": "Spanish", "et": "Estonian", "eu": "Basque", "fa": "Persian",
-    "fi": "Finnish", "fo": "Faroese", "fr": "French", "fur": "Friulian",
-    "fy": "West Frisian", "ga": "Irish", "gd": "Scottish Gaelic", "gl": "Galician",
-    "he": "Hebrew", "hr": "Serbo-Croatian", "hu": "Hungarian", "hy": "Armenian",
-    "hyw": "Western Armenian", "ia": "Interlingua", "ie": "Interlingue",
-    "is": "Icelandic", "it": "Italian", "ka": "Georgian", "ko": "Korean",
-    "la": "Latin", "lb": "Luxembourgish", "lt": "Lithuanian", "ltg": "Latgalian",
-    "lv": "Latvian", "mi": "Māori", "mk": "Macedonian", "mn": "Mongolian",
-    "nb": "Norwegian Bokmål", "nds": "German Low German", "ne": "Nepali",
-    "nl": "Dutch", "nn": "Norwegian Nynorsk", "oc": "Occitan",
-    "pau": "Palauan", "pl": "Polish", "pt": "Portuguese", "qya": "Quenya",
-    "ro": "Romanian", "ru": "Russian", "rw": "Kinyarwanda", "sk": "Slovak",
-    "sl": "Slovene", "sr": "Serbo-Croatian", "sv": "Swedish", "tk": "Turkmen",
-    "tlh": "Klingon", "tr": "Turkish", "uk": "Ukrainian", "vi": "Vietnamese",
+    "ar": "Arabic",
+    "az": "Azerbaijani",
+    "bg": "Bulgarian",
+    "br": "Breton",
+    "ca": "Catalan",
+    "ckb": "Central Kurdish",
+    "cs": "Czech",
+    "da": "Danish",
+    "de": "German",
+    "el": "Greek",
+    "en": "English",
+    "eo": "Esperanto",
+    "es": "Spanish",
+    "et": "Estonian",
+    "eu": "Basque",
+    "fa": "Persian",
+    "fi": "Finnish",
+    "fo": "Faroese",
+    "fr": "French",
+    "fur": "Friulian",
+    "fy": "West Frisian",
+    "ga": "Irish",
+    "gd": "Scottish Gaelic",
+    "gl": "Galician",
+    "he": "Hebrew",
+    "hr": "Serbo-Croatian",
+    "hu": "Hungarian",
+    "hy": "Armenian",
+    "hyw": "Western Armenian",
+    "ia": "Interlingua",
+    "ie": "Interlingue",
+    "is": "Icelandic",
+    "it": "Italian",
+    "ka": "Georgian",
+    "ko": "Korean",
+    "la": "Latin",
+    "lb": "Luxembourgish",
+    "lt": "Lithuanian",
+    "ltg": "Latgalian",
+    "lv": "Latvian",
+    "mi": "Māori",
+    "mk": "Macedonian",
+    "mn": "Mongolian",
+    "nb": "Norwegian Bokmål",
+    "nds": "German Low German",
+    "ne": "Nepali",
+    "nl": "Dutch",
+    "nn": "Norwegian Nynorsk",
+    "oc": "Occitan",
+    "pau": "Palauan",
+    "pl": "Polish",
+    "pt": "Portuguese",
+    "qya": "Quenya",
+    "ro": "Romanian",
+    "ru": "Russian",
+    "rw": "Kinyarwanda",
+    "sk": "Slovak",
+    "sl": "Slovene",
+    "sr": "Serbo-Croatian",
+    "sv": "Swedish",
+    "tk": "Turkmen",
+    "tlh": "Klingon",
+    "tr": "Turkish",
+    "uk": "Ukrainian",
+    "vi": "Vietnamese",
 }
 
 NATIVE_EDITION_MAP = {
-    "cs": "cs", "de": "de", "el": "el", "es": "es", "fr": "fr",
-    "it": "it", "ko": "ko", "nl": "nl", "pl": "pl", "pt": "pt",
-    "ru": "ru", "tr": "tr", "vi": "vi",
+    "cs": "cs",
+    "de": "de",
+    "el": "el",
+    "es": "es",
+    "fr": "fr",
+    "it": "it",
+    "ko": "ko",
+    "nl": "nl",
+    "pl": "pl",
+    "pt": "pt",
+    "ru": "ru",
+    "tr": "tr",
+    "vi": "vi",
 }
 
 # All our supported language codes (for filtering translations)
@@ -75,10 +133,10 @@ OFFENSIVE_TAGS = {"derogatory", "offensive", "slur", "vulgar", "pejorative"}
 # Helpers
 # ---------------------------------------------------------------------------
 
+
 def get_all_lang_codes():
     codes = sorted(
-        d for d in os.listdir(LANGUAGES_DIR)
-        if os.path.isdir(os.path.join(LANGUAGES_DIR, d))
+        d for d in os.listdir(LANGUAGES_DIR) if os.path.isdir(os.path.join(LANGUAGES_DIR, d))
     )
     ALL_OUR_LANGS.update(codes)
     return codes
@@ -93,7 +151,7 @@ def load_word_set(lang_code):
         with open(words_file, encoding="utf-8") as f:
             data = json.load(f)
         return {w["word"].lower() for w in data.get("words", []) if w.get("word")}
-    except (json.JSONDecodeError, KeyError):
+    except json.JSONDecodeError, KeyError:
         return set()
 
 
@@ -114,14 +172,13 @@ def is_unhelpful(gloss):
     """Skip bare grammatical forms and form-of references."""
     if re.match(r"^(alternative |obsolete |archaic )?(form|spelling) of\b", gloss, re.I):
         return True
-    if re.match(r"^See \w+\.?$", gloss, re.I):
-        return True
-    return False
+    return bool(re.match(r"^See \w+\.?$", gloss, re.I))
 
 
 # ---------------------------------------------------------------------------
 # Download (reuses logic from build_definitions.py)
 # ---------------------------------------------------------------------------
+
 
 def kaikki_url(lang_name):
     dir_part = urllib.parse.quote(lang_name, safe="")
@@ -152,7 +209,11 @@ def download_file(url, dest):
                     downloaded += len(chunk)
                     if total:
                         pct = downloaded * 100 // total
-                        print(f"\r  {downloaded / 1e6:.1f}/{total / 1e6:.1f} MB ({pct}%)", end="", flush=True)
+                        print(
+                            f"\r  {downloaded / 1e6:.1f}/{total / 1e6:.1f} MB ({pct}%)",
+                            end="",
+                            flush=True,
+                        )
             print(f"\r  Done: {downloaded / 1e6:.1f} MB" + " " * 30)
             return True
     except urllib.error.HTTPError as e:
@@ -205,6 +266,7 @@ def cmd_download(lang_codes, edition="both"):
 # Process — extract rich structured data
 # ---------------------------------------------------------------------------
 
+
 def extract_from_jsonl(gz_path, target_words, lang_code_filter=None):
     """Extract rich dictionary data from a kaikki JSONL file.
 
@@ -220,133 +282,139 @@ def extract_from_jsonl(gz_path, target_words, lang_code_filter=None):
     raw = {}  # word -> [{pos, glosses, etymology, ipa, forms, translations}]
 
     with gzip.open(gz_path, "rt", encoding="utf-8") as f:
-      try:
-        for line in f:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                entry = json.loads(line)
-            except json.JSONDecodeError:
-                continue
-
-            word = entry.get("word", "").lower()
-            if word not in target_words:
-                continue
-
-            if lang_code_filter and entry.get("lang_code") != lang_code_filter:
-                continue
-
-            pos = entry.get("pos", "unknown")
-
-            # Etymology
-            etymology = entry.get("etymology_text") or ""
-            if not etymology:
-                texts = entry.get("etymology_texts", [])
-                if texts:
-                    etymology = texts[0] if isinstance(texts, list) else ""
-            etymology = html.unescape(etymology).strip() if etymology else None
-            # Skip tree-format etymologies
-            if etymology and (etymology.startswith("Etymology tree") or etymology.count("\n") > 3):
-                etymology = None
-
-            # IPA
-            sounds = entry.get("sounds", [])
-            ipas = [s["ipa"] for s in sounds if isinstance(s, dict) and "ipa" in s]
-            ipa = ", ".join(ipas[:3]) if ipas else None
-
-            # Forms — filter to useful ones (actual word forms, not metadata)
-            forms_raw = entry.get("forms", [])
-            forms = []
-            for fm in forms_raw:
-                if not isinstance(fm, dict):
+        try:
+            for line in f:
+                line = line.strip()
+                if not line:
                     continue
-                form_text = fm.get("form", "")
-                tags = fm.get("tags", [])
-                # Skip metadata entries
-                if any(t in tags for t in ["table-tags", "inflection-template", "class"]):
-                    continue
-                if not form_text or form_text.startswith("no-") or form_text.startswith("fi-"):
-                    continue
-                # Keep only common useful tags
-                clean_tags = [t for t in tags if t not in ("declension", "conjugation", "mutation")]
-                if clean_tags and form_text:
-                    forms.append({"form": html.unescape(form_text), "tags": clean_tags})
-
-            # Translations (only from English edition entries)
-            trans_raw = entry.get("translations", [])
-            translations = []
-            for t in trans_raw:
-                if not isinstance(t, dict):
-                    continue
-                tcode = t.get("lang_code", "")
-                tword = t.get("word", "")
-                if tcode and tword and tcode in ALL_OUR_LANGS:
-                    translations.append({"code": tcode, "word": html.unescape(tword)})
-
-            # Senses/glosses
-            glosses = []
-            for sense in entry.get("senses", []):
-                sense_glosses = sense.get("glosses", [])
-                if not sense_glosses:
-                    continue
-                # Use last gloss (most specific) or first if only one
-                gloss_text = sense_glosses[-1] if len(sense_glosses) > 1 else sense_glosses[0]
-                gloss_text = clean_gloss(gloss_text)
-                if not gloss_text or len(gloss_text) < 3:
-                    continue
-                if is_unhelpful(gloss_text):
+                try:
+                    entry = json.loads(line)
+                except json.JSONDecodeError:
                     continue
 
-                # Skip offensive senses
-                tags = set(sense.get("tags", []))
-                if tags & OFFENSIVE_TAGS:
+                word = entry.get("word", "").lower()
+                if word not in target_words:
                     continue
 
-                g = {"gloss": gloss_text}
-                clean_tags = [t for t in sense.get("tags", []) if t not in OFFENSIVE_TAGS]
-                if clean_tags:
-                    g["tags"] = clean_tags[:5]
+                if lang_code_filter and entry.get("lang_code") != lang_code_filter:
+                    continue
 
-                # Examples
-                examples = []
-                for ex in sense.get("examples", []):
-                    if isinstance(ex, dict):
-                        text = html.unescape(ex.get("text", "")).strip()
-                        if text and len(text) > 5:
-                            e = {"text": text[:200]}
-                            tr = ex.get("english", "") or ex.get("translation", "")
-                            if tr:
-                                e["translation"] = html.unescape(tr)[:200]
-                            examples.append(e)
-                if examples:
-                    g["examples"] = examples[:3]
+                pos = entry.get("pos", "unknown")
 
-                # Synonyms
-                syn_list = []
-                for syn in sense.get("synonyms", []):
-                    if isinstance(syn, dict) and syn.get("word"):
-                        syn_list.append(syn["word"])
-                if syn_list:
-                    g["synonyms"] = syn_list[:5]
+                # Etymology
+                etymology = entry.get("etymology_text") or ""
+                if not etymology:
+                    texts = entry.get("etymology_texts", [])
+                    if texts:
+                        etymology = texts[0] if isinstance(texts, list) else ""
+                etymology = html.unescape(etymology).strip() if etymology else None
+                # Skip tree-format etymologies
+                if etymology and (
+                    etymology.startswith("Etymology tree") or etymology.count("\n") > 3
+                ):
+                    etymology = None
 
-                glosses.append(g)
+                # IPA
+                sounds = entry.get("sounds", [])
+                ipas = [s["ipa"] for s in sounds if isinstance(s, dict) and "ipa" in s]
+                ipa = ", ".join(ipas[:3]) if ipas else None
 
-            if not glosses:
-                continue
+                # Forms — filter to useful ones (actual word forms, not metadata)
+                forms_raw = entry.get("forms", [])
+                forms = []
+                for fm in forms_raw:
+                    if not isinstance(fm, dict):
+                        continue
+                    form_text = fm.get("form", "")
+                    tags = fm.get("tags", [])
+                    # Skip metadata entries
+                    if any(t in tags for t in ["table-tags", "inflection-template", "class"]):
+                        continue
+                    if not form_text or form_text.startswith("no-") or form_text.startswith("fi-"):
+                        continue
+                    # Keep only common useful tags
+                    clean_tags = [
+                        t for t in tags if t not in ("declension", "conjugation", "mutation")
+                    ]
+                    if clean_tags and form_text:
+                        forms.append({"form": html.unescape(form_text), "tags": clean_tags})
 
-            if word not in raw:
-                raw[word] = []
-            raw[word].append({
-                "pos": pos,
-                "glosses": glosses,
-                "etymology": etymology,
-                "ipa": ipa,
-                "forms": forms,
-                "translations": translations,
-            })
-      except EOFError:
-        print(f"    Warning: truncated gzip file, processing {len(raw)} words found so far")
+                # Translations (only from English edition entries)
+                trans_raw = entry.get("translations", [])
+                translations = []
+                for t in trans_raw:
+                    if not isinstance(t, dict):
+                        continue
+                    tcode = t.get("lang_code", "")
+                    tword = t.get("word", "")
+                    if tcode and tword and tcode in ALL_OUR_LANGS:
+                        translations.append({"code": tcode, "word": html.unescape(tword)})
+
+                # Senses/glosses
+                glosses = []
+                for sense in entry.get("senses", []):
+                    sense_glosses = sense.get("glosses", [])
+                    if not sense_glosses:
+                        continue
+                    # Use last gloss (most specific) or first if only one
+                    gloss_text = sense_glosses[-1] if len(sense_glosses) > 1 else sense_glosses[0]
+                    gloss_text = clean_gloss(gloss_text)
+                    if not gloss_text or len(gloss_text) < 3:
+                        continue
+                    if is_unhelpful(gloss_text):
+                        continue
+
+                    # Skip offensive senses
+                    tags = set(sense.get("tags", []))
+                    if tags & OFFENSIVE_TAGS:
+                        continue
+
+                    g = {"gloss": gloss_text}
+                    clean_tags = [t for t in sense.get("tags", []) if t not in OFFENSIVE_TAGS]
+                    if clean_tags:
+                        g["tags"] = clean_tags[:5]
+
+                    # Examples
+                    examples = []
+                    for ex in sense.get("examples", []):
+                        if isinstance(ex, dict):
+                            text = html.unescape(ex.get("text", "")).strip()
+                            if text and len(text) > 5:
+                                e = {"text": text[:200]}
+                                tr = ex.get("english", "") or ex.get("translation", "")
+                                if tr:
+                                    e["translation"] = html.unescape(tr)[:200]
+                                examples.append(e)
+                    if examples:
+                        g["examples"] = examples[:3]
+
+                    # Synonyms
+                    syn_list = []
+                    for syn in sense.get("synonyms", []):
+                        if isinstance(syn, dict) and syn.get("word"):
+                            syn_list.append(syn["word"])
+                    if syn_list:
+                        g["synonyms"] = syn_list[:5]
+
+                    glosses.append(g)
+
+                if not glosses:
+                    continue
+
+                if word not in raw:
+                    raw[word] = []
+                raw[word].append(
+                    {
+                        "pos": pos,
+                        "glosses": glosses,
+                        "etymology": etymology,
+                        "ipa": ipa,
+                        "forms": forms,
+                        "translations": translations,
+                    }
+                )
+        except EOFError:
+            print(f"    Warning: truncated gzip file, processing {len(raw)} words found so far")
 
     # Merge into final format
     results = {}
@@ -469,6 +537,7 @@ def cmd_process(lang_codes):
 # Upload — write to Postgres
 # ---------------------------------------------------------------------------
 
+
 def cmd_upload(lang_codes, dry_run=False):
     import pg8000
 
@@ -485,12 +554,16 @@ def cmd_upload(lang_codes, dry_run=False):
         print("ERROR: DATABASE_URL not set", file=sys.stderr)
         sys.exit(1)
 
-    from urllib.parse import urlparse, unquote
+    from urllib.parse import unquote, urlparse
+
     parsed = urlparse(db_url)
     conn = pg8000.connect(
-        host=parsed.hostname, port=parsed.port or 5432,
-        user=unquote(parsed.username or ""), password=unquote(parsed.password or ""),
-        database=parsed.path.lstrip("/"), ssl_context=True,
+        host=parsed.hostname,
+        port=parsed.port or 5432,
+        user=unquote(parsed.username or ""),
+        password=unquote(parsed.password or ""),
+        database=parsed.path.lstrip("/"),
+        ssl_context=True,
     )
     cursor = conn.cursor()
     total = 0
@@ -500,7 +573,8 @@ def cmd_upload(lang_codes, dry_run=False):
         path = os.path.join(PROCESSED_DIR, f"{lc}.json")
         if not os.path.isfile(path):
             continue
-        data = json.load(open(path, encoding="utf-8"))
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
         if not data:
             continue
 
@@ -508,7 +582,7 @@ def cmd_upload(lang_codes, dry_run=False):
         count = 0
 
         for i in range(0, len(items), BATCH):
-            batch = items[i:i + BATCH]
+            batch = items[i : i + BATCH]
             if dry_run:
                 count += len(batch)
                 continue
@@ -519,13 +593,21 @@ def cmd_upload(lang_codes, dry_run=False):
             for idx, (word, entry) in enumerate(batch):
                 sj = json.dumps(entry["senses"], ensure_ascii=False)
                 fj = json.dumps(entry["forms"], ensure_ascii=False) if entry.get("forms") else None
-                tj = json.dumps(entry["translations"], ensure_ascii=False) if entry.get("translations") else None
+                tj = (
+                    json.dumps(entry["translations"], ensure_ascii=False)
+                    if entry.get("translations")
+                    else None
+                )
                 base = idx * 7
-                values.append(f"(${base+1}, ${base+2}, ${base+3}::jsonb, ${base+4}, ${base+5}, ${base+6}::jsonb, ${base+7}::jsonb)")
-                params.extend([lc, word, sj, entry.get("etymology"), entry.get("pronunciation"), fj, tj])
+                values.append(
+                    f"(${base + 1}, ${base + 2}, ${base + 3}::jsonb, ${base + 4}, ${base + 5}, ${base + 6}::jsonb, ${base + 7}::jsonb)"
+                )
+                params.extend(
+                    [lc, word, sj, entry.get("etymology"), entry.get("pronunciation"), fj, tj]
+                )
 
             sql = f"""INSERT INTO wordle.definitions (lang, word, senses, etymology, pronunciation, forms, translations)
-                VALUES {', '.join(values)}
+                VALUES {", ".join(values)}
                 ON CONFLICT (lang, word) DO UPDATE SET
                     senses = EXCLUDED.senses,
                     etymology = EXCLUDED.etymology,
@@ -536,7 +618,7 @@ def cmd_upload(lang_codes, dry_run=False):
             try:
                 cursor.execute(sql, params)
                 count += len(batch)
-            except Exception as e:
+            except Exception:
                 # pg8000 may not support $N placeholders, fall back to %s
                 conn.rollback()
                 # Retry with %s placeholders
@@ -544,12 +626,22 @@ def cmd_upload(lang_codes, dry_run=False):
                 params2 = []
                 for word, entry in batch:
                     sj = json.dumps(entry["senses"], ensure_ascii=False)
-                    fj = json.dumps(entry["forms"], ensure_ascii=False) if entry.get("forms") else None
-                    tj = json.dumps(entry["translations"], ensure_ascii=False) if entry.get("translations") else None
+                    fj = (
+                        json.dumps(entry["forms"], ensure_ascii=False)
+                        if entry.get("forms")
+                        else None
+                    )
+                    tj = (
+                        json.dumps(entry["translations"], ensure_ascii=False)
+                        if entry.get("translations")
+                        else None
+                    )
                     values2.append("(%s, %s, %s::jsonb, %s, %s, %s::jsonb, %s::jsonb)")
-                    params2.extend([lc, word, sj, entry.get("etymology"), entry.get("pronunciation"), fj, tj])
+                    params2.extend(
+                        [lc, word, sj, entry.get("etymology"), entry.get("pronunciation"), fj, tj]
+                    )
                 sql2 = f"""INSERT INTO wordle.definitions (lang, word, senses, etymology, pronunciation, forms, translations)
-                    VALUES {', '.join(values2)}
+                    VALUES {", ".join(values2)}
                     ON CONFLICT (lang, word) DO UPDATE SET
                         senses = EXCLUDED.senses, etymology = EXCLUDED.etymology,
                         pronunciation = EXCLUDED.pronunciation,
@@ -569,6 +661,7 @@ def cmd_upload(lang_codes, dry_run=False):
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
+
 
 def main():
     parser = argparse.ArgumentParser(description="Import kaikki.org dictionary data")
@@ -595,9 +688,10 @@ def main():
         for lc in sorted(lang_codes):
             p = os.path.join(PROCESSED_DIR, f"{lc}.json")
             if os.path.isfile(p):
-                d = json.load(open(p))
+                with open(p) as f:
+                    d = json.load(f)
                 words = load_word_set(lc)
-                print(f"  [{lc}] {len(d)}/{len(words)} ({len(d)*100//max(len(words),1)}%)")
+                print(f"  [{lc}] {len(d)}/{len(words)} ({len(d) * 100 // max(len(words), 1)}%)")
 
 
 if __name__ == "__main__":

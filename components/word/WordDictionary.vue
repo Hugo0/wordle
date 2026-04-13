@@ -120,11 +120,7 @@ function formatTags(tags: string[]): string {
                         <span class="sense-gloss">{{ sense.gloss }}</span>
 
                         <div v-if="sense.examples?.length" class="examples">
-                            <div
-                                v-for="(ex, exi) in sense.examples"
-                                :key="exi"
-                                class="example"
-                            >
+                            <div v-for="(ex, exi) in sense.examples" :key="exi" class="example">
                                 <span class="example-text">&ldquo;{{ ex.text }}&rdquo;</span>
                                 <span v-if="ex.translation" class="example-translation">
                                     — {{ ex.translation }}
@@ -141,7 +137,9 @@ function formatTags(tags: string[]): string {
                 <span class="forms-list">
                     <span v-for="(f, fi) in data.forms" :key="fi" class="form-item">
                         <em>{{ f.form }}</em>
-                        <span v-if="f.tags.length" class="form-tags">({{ f.tags.join(', ') }})</span>
+                        <span v-if="f.tags.length" class="form-tags"
+                            >({{ f.tags.join(', ') }})</span
+                        >
                         <span v-if="fi < data.forms!.length - 1" class="form-sep"> · </span>
                     </span>
                 </span>
@@ -158,9 +156,7 @@ function formatTags(tags: string[]): string {
                 >
                     Wiktionary — CC BY-SA 4.0
                 </a>
-                <span v-else class="attribution-link">
-                    Source: Wiktionary — CC BY-SA 4.0
-                </span>
+                <span v-else class="attribution-link"> Source: Wiktionary — CC BY-SA 4.0 </span>
             </div>
         </div>
     </section>

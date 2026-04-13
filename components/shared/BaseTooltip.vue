@@ -125,8 +125,12 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick, true));
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
-.tooltip-box.above { bottom: calc(100% + 8px); }
-.tooltip-box.below { top: calc(100% + 8px); }
+.tooltip-box.above {
+    bottom: calc(100% + 8px);
+}
+.tooltip-box.below {
+    top: calc(100% + 8px);
+}
 
 .tooltip-caret {
     position: absolute;
@@ -148,11 +152,20 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick, true));
 
 .tt-enter-active,
 .tt-leave-active {
-    transition: opacity 120ms ease, transform 120ms ease;
+    transition:
+        opacity 120ms ease,
+        transform 120ms ease;
 }
-.tt-enter-from, .tt-leave-to { opacity: 0; }
+.tt-enter-from,
+.tt-leave-to {
+    opacity: 0;
+}
 .tooltip-box.above.tt-enter-from,
-.tooltip-box.above.tt-leave-to { transform: translateX(-50%) translateY(4px); }
+.tooltip-box.above.tt-leave-to {
+    transform: translateX(-50%) translateY(4px);
+}
 .tooltip-box.below.tt-enter-from,
-.tooltip-box.below.tt-leave-to { transform: translateX(-50%) translateY(-4px); }
+.tooltip-box.below.tt-leave-to {
+    transform: translateX(-50%) translateY(-4px);
+}
 </style>

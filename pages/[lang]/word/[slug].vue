@@ -343,7 +343,10 @@ useHead({
         { name: 'twitter:title', content: titleStr },
         { name: 'twitter:description', content: () => descriptionStr.value.slice(0, 200) },
         { name: 'twitter:image', content: ogImageStr },
-        { name: 'robots', content: () => (context.isCustom.value ? 'noindex,follow' : 'index,follow') },
+        {
+            name: 'robots',
+            content: () => (context.isCustom.value ? 'noindex,follow' : 'index,follow'),
+        },
     ],
     link: [{ rel: 'canonical', href: canonicalUrl }],
     script: [
@@ -356,9 +359,24 @@ useHead({
                         '@context': 'https://schema.org',
                         '@type': 'BreadcrumbList',
                         itemListElement: [
-                            { '@type': 'ListItem', position: 1, name: 'Wordle Global', item: 'https://wordle.global/' },
-                            { '@type': 'ListItem', position: 2, name: `Wordle ${langNameNative.value}`, item: `https://wordle.global/${lang}` },
-                            { '@type': 'ListItem', position: 3, name: word.value, item: canonicalUrl.value },
+                            {
+                                '@type': 'ListItem',
+                                position: 1,
+                                name: 'Wordle Global',
+                                item: 'https://wordle.global/',
+                            },
+                            {
+                                '@type': 'ListItem',
+                                position: 2,
+                                name: `Wordle ${langNameNative.value}`,
+                                item: `https://wordle.global/${lang}`,
+                            },
+                            {
+                                '@type': 'ListItem',
+                                position: 3,
+                                name: word.value,
+                                item: canonicalUrl.value,
+                            },
                         ],
                     };
                     const wordDateStr = primary.value?.basic?.word_date || '';
@@ -377,7 +395,9 @@ useHead({
                           }
                         : null;
                     return JSON.stringify(definedTerm ? [breadcrumb, definedTerm] : breadcrumb);
-                } catch { return '{}'; }
+                } catch {
+                    return '{}';
+                }
             }) as unknown as string,
         },
     ],
@@ -386,7 +406,9 @@ useHead({
 // ── Image ───────────────────────────────────────────────────────────────
 const imageUrl = computed(() => basicData.value?.image_url || null);
 const imageExpanded = ref(false);
-watch(word, () => { imageExpanded.value = false; });
+watch(word, () => {
+    imageExpanded.value = false;
+});
 
 // ── Wiktionary link ─────────────────────────────────────────────────────
 const wiktionaryUrl = computed(() => {
@@ -456,9 +478,15 @@ const dictionaryData = computed<DictionaryData | null>(() => {
 });
 
 const translations = computed(() => {
-    return (basicData.value?.dictionary?.translations as Array<{ code: string; word: string; hasPage: boolean; name: string }>) || [];
+    return (
+        (basicData.value?.dictionary?.translations as Array<{
+            code: string;
+            word: string;
+            hasPage: boolean;
+            name: string;
+        }>) || []
+    );
 });
-
 </script>
 
 <template>
@@ -502,7 +530,13 @@ const translations = computed(() => {
                                 aria-label="Expand image"
                             >
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M4 6L8 10L12 6"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
                                 </svg>
                             </button>
                         </div>
@@ -556,10 +590,7 @@ const translations = computed(() => {
                     </div>
 
                     <!-- Appeared in: game modes where this word was a daily word -->
-                    <section
-                        v-if="appearances.length"
-                        class="stats-section"
-                    >
+                    <section v-if="appearances.length" class="stats-section">
                         <div class="section-label">Appeared In</div>
                         <div class="appeared-in">
                             <div
@@ -728,7 +759,9 @@ const translations = computed(() => {
     border: none;
     cursor: pointer;
     opacity: 0.5;
-    transition: opacity 150ms ease, transform 200ms ease;
+    transition:
+        opacity 150ms ease,
+        transform 200ms ease;
     pointer-events: none;
 }
 .image-expand-hint.flipped {
@@ -859,7 +892,9 @@ const translations = computed(() => {
     padding: 4px 12px;
     border: 1px solid var(--color-rule);
     text-decoration: none;
-    transition: border-color 120ms ease, color 120ms ease;
+    transition:
+        border-color 120ms ease,
+        color 120ms ease;
 }
 .related-word-link:hover {
     color: var(--color-accent);

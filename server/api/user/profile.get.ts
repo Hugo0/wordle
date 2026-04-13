@@ -25,14 +25,25 @@ export default defineEventHandler(async (event) => {
         email: user.email,
         createdAt: user.createdAt,
         settings: user.settings,
-        badges: user.badges.map((ub: { badge: { slug: string; name: string; description: string; category: string; icon: string }; earnedAt: Date }) => ({
-            slug: ub.badge.slug,
-            name: ub.badge.name,
-            description: ub.badge.description,
-            category: ub.badge.category,
-            icon: ub.badge.icon,
-            earnedAt: ub.earnedAt,
-        })),
+        badges: user.badges.map(
+            (ub: {
+                badge: {
+                    slug: string;
+                    name: string;
+                    description: string;
+                    category: string;
+                    icon: string;
+                };
+                earnedAt: Date;
+            }) => ({
+                slug: ub.badge.slug,
+                name: ub.badge.name,
+                description: ub.badge.description,
+                category: ub.badge.category,
+                icon: ub.badge.icon,
+                earnedAt: ub.earnedAt,
+            })
+        ),
         isPro: user.subscription?.status === 'active',
     };
 });

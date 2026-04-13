@@ -295,7 +295,13 @@ const _modeReverseCache = new Map<string, ModeReverseIndex>();
 
 /** Modes that use 1-based mode day indices starting April 11 2026. */
 const USES_MODE_DAY_IDX = new Set([
-    'dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle', 'speed', 'semantic',
+    'dordle',
+    'quordle',
+    'octordle',
+    'sedecordle',
+    'duotrigordle',
+    'speed',
+    'semantic',
 ]);
 
 function ensureModeReverseIndex(langCode: string, mode: string): ModeReverseIndex {
@@ -334,9 +340,10 @@ function ensureModeReverseIndex(langCode: string, mode: string): ModeReverseInde
         }
 
         for (let b = 0; b < boardCount; b++) {
-            const slotIdx = b === 0
-                ? classicIdx + modeOffset
-                : classicIdx + modeOffset + b * MULTI_BOARD_SLOT_OFFSET;
+            const slotIdx =
+                b === 0
+                    ? classicIdx + modeOffset
+                    : classicIdx + modeOffset + b * MULTI_BOARD_SLOT_OFFSET;
             const slotH = dayHash(slotIdx, langCode);
             const selected = ringSelect(ring, slotH, exclude);
             if (selected) {

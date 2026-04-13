@@ -19,7 +19,12 @@ export default defineOAuthGoogleEventHandler({
     config: {
         scope: ['openid', 'email', 'profile'],
     },
-    async onSuccess(event, { user: googleUser }: { user: { sub: string; email: string; name: string; picture: string } }) {
+    async onSuccess(
+        event,
+        {
+            user: googleUser,
+        }: { user: { sub: string; email: string; name: string; picture: string } }
+    ) {
         // Check if user already exists (returning login)
         let user = await withRetry(() =>
             prisma.user.findUnique({ where: { googleId: googleUser.sub } })

@@ -259,7 +259,10 @@
                     <SidebarItem
                         icon="Bug"
                         :label="ui?.report_issue || 'Report a bug'"
-                        @click="openReportModal(); close()"
+                        @click="
+                            openReportModal();
+                            close();
+                        "
                     />
                 </div>
 
@@ -536,7 +539,6 @@ const multiboardModes = computed(
 const disabledModes = computed(() =>
     GAME_MODES_UI.filter((m) => !m.enabled && m.id !== 'unlimited')
 );
-
 </script>
 
 <style scoped>

@@ -13,18 +13,44 @@
 // so "assess" doesn't trigger on "ass", "scunthorpe" doesn't trigger on "cunt", etc.
 const BLOCKED_WORDS = [
     // Slurs & hate speech
-    'nigger', 'nigga', 'faggot', 'fag', 'retard', 'tranny', 'kike', 'chink', 'spic', 'wetback',
+    'nigger',
+    'nigga',
+    'faggot',
+    'fag',
+    'retard',
+    'tranny',
+    'kike',
+    'chink',
+    'spic',
+    'wetback',
     // Sexual
-    'fuck', 'fucker', 'fucking', 'motherfucker', 'shit', 'shitty', 'bullshit',
-    'cunt', 'dick', 'cock', 'pussy', 'whore', 'slut', 'bitch',
-    'porn', 'hentai', 'dildo', 'blowjob', 'handjob',
+    'fuck',
+    'fucker',
+    'fucking',
+    'motherfucker',
+    'shit',
+    'shitty',
+    'bullshit',
+    'cunt',
+    'dick',
+    'cock',
+    'pussy',
+    'whore',
+    'slut',
+    'bitch',
+    'porn',
+    'hentai',
+    'dildo',
+    'blowjob',
+    'handjob',
     // Threats / violence
-    'kill yourself', 'kys',
+    'kill yourself',
+    'kys',
 ];
 
 // Build a single regex: match any blocked word at word boundaries (case-insensitive)
 const BLOCKED_RE = new RegExp(
-    '\\b(' + BLOCKED_WORDS.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b',
+    '\\b(' + BLOCKED_WORDS.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b',
     'i'
 );
 
@@ -52,7 +78,7 @@ export function moderateComment(text: string): ModerationResult {
     }
 
     if (EXCESSIVE_CAPS_RE.test(text) && text.length > 30) {
-        return { ok: false, reason: 'Please don\'t write in all caps.' };
+        return { ok: false, reason: "Please don't write in all caps." };
     }
 
     return { ok: true };

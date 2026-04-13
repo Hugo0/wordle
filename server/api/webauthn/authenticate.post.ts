@@ -22,10 +22,12 @@ export default defineWebAuthnAuthenticateEventHandler({
             throw createError({ statusCode: 400, message: 'User not found' });
         }
 
-        return user.credentials.map((c: { credentialId: string; transports: string | string[] }) => ({
-            id: c.credentialId,
-            transports: c.transports as AuthenticatorTransportFuture[],
-        }));
+        return user.credentials.map(
+            (c: { credentialId: string; transports: string | string[] }) => ({
+                id: c.credentialId,
+                transports: c.transports as AuthenticatorTransportFuture[],
+            })
+        );
     },
     async getCredential(event, credentialId) {
         const cred = await prisma.credential.findUnique({

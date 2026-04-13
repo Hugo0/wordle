@@ -286,16 +286,16 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
                 <Info :size="13" class="info-icon" />
                 <template #content>
                     <span class="tooltip-body">
-                        Words that mean similar things appear close together.
-                        Red lines connect the most closely related words.
-                        Brighter, larger dots indicate stronger similarity.
+                        Words that mean similar things appear close together. Red lines connect the
+                        most closely related words. Brighter, larger dots indicate stronger
+                        similarity.
                         <br /><br />
-                        The map is a simplified 2D view of how words relate
-                        in meaning — originally computed across hundreds of
-                        dimensions. Click any word to explore its neighborhood.
+                        The map is a simplified 2D view of how words relate in meaning — originally
+                        computed across hundreds of dimensions. Click any word to explore its
+                        neighborhood.
                         <br /><br />
-                        The "slice by" chips let you compare words along specific
-                        dimensions, like formal vs. informal or concrete vs. abstract.
+                        The "slice by" chips let you compare words along specific dimensions, like
+                        formal vs. informal or concrete vs. abstract.
                     </span>
                 </template>
             </BaseTooltip>
