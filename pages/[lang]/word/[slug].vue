@@ -5,7 +5,7 @@
  * Unified word detail + Explorer for any word. Slug is numeric (legacy,
  * redirected to word-name) or a canonical word name. The page is a single
  * editorial flow: headline → definition (if any) → image (if cached) →
- * Nearby in Meaning → daily stats (for daily words only) → share → Giscus.
+ * Nearby in Meaning → daily stats (for daily words only) → share → comments.
  *
  * The "Nearby in Meaning" section is the core interaction: it shows the
  * primary word plus its context (auto-selected neighbors or user-chosen
@@ -15,11 +15,16 @@
 import { computed, onMounted, ref, watch, onUnmounted } from 'vue';
 import { formatDateLong, getLocaleForIntl, RTL_LANGS } from '~/utils/locale';
 import { interpolate } from '~/utils/interpolate';
-import { wordDetailPath, wordDetailUrl, wordImageUrl } from '~/utils/wordUrls';
+import { wordDetailPath, wordDetailUrl } from '~/utils/wordUrls';
+import { GAME_MODES_UI } from '~/composables/useGameModes';
+import { Share2, Archive } from 'lucide-vue-next';
 import WordHeadline from '~/components/word/WordHeadline.vue';
-import WordImage from '~/components/word/WordImage.vue';
 import WordDefinition from '~/components/word/WordDefinition.vue';
+import WordDictionary from '~/components/word/WordDictionary.vue';
+import type { DictionaryData } from '~/components/word/WordDictionary.vue';
+import WordTranslations from '~/components/word/WordTranslations.vue';
 import NearbyInMeaning from '~/components/word/NearbyInMeaning.vue';
+import WordComments from '~/components/word/WordComments.vue';
 import type { WordBasic, WordData, WordExploreData } from '~/composables/useWordData';
 import type { WordDefinition as WordDefinitionType } from '~/utils/types';
 
@@ -263,6 +268,11 @@ const defText = computed(
     () => primary.value?.definition?.definitionNative || primary.value?.definition?.definition || ''
 );
 const posText = computed(() => primary.value?.definition?.partOfSpeech || '');
+const ogImageStr = computed(() => {
+    const imgUrl = basicData.value?.image_url;
+    if (imgUrl) return `https://wordle.global${imgUrl}`;
+    return `https://wordle.global/images/modes/classic/${lang}.png`;
+});
 const metaTemplates = computed(
     () =>
         ((primary.value?.basic?.meta as Record<string, unknown>)?.word_detail as Record<
@@ -315,94 +325,68 @@ const descriptionStr = computed(() => {
     return `Explore ${upperWord.value} — its meaning, semantic neighbors, and context in Wordle ${langNameNative.value}.`;
 });
 
-useSeoMeta({
+// Single useHead call — merging SEO meta, HTML attrs, link, and JSON-LD
+// into one registration avoids the @unhead/vue dispose bug where separate
+// useHead closures can have undefined `entry` on unmount.
+useHead({
     title: titleStr,
-    description: () => descriptionStr.value.slice(0, 200),
-    ogTitle: titleStr,
-    ogUrl: canonicalUrl,
-    ogType: 'article',
-    ogLocale: lang,
-    ogDescription: () => descriptionStr.value.slice(0, 200),
-    ogImage: () => (word.value ? wordImageUrl(lang, word.value, dayIdx.value) : undefined),
-    twitterCard: 'summary_large_image',
-    twitterTitle: titleStr,
-    twitterDescription: () => descriptionStr.value.slice(0, 200),
-    twitterImage: () => (word.value ? wordImageUrl(lang, word.value) : undefined),
-    robots: () => (context.isCustom.value ? 'noindex,follow' : 'index,follow'),
-});
-
-useHead({
     htmlAttrs: { lang, dir: RTL_LANGS.has(lang) ? 'rtl' : 'ltr' },
+    meta: [
+        { name: 'description', content: () => descriptionStr.value.slice(0, 200) },
+        { property: 'og:title', content: titleStr },
+        { property: 'og:url', content: canonicalUrl },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:locale', content: lang },
+        { property: 'og:description', content: () => descriptionStr.value.slice(0, 200) },
+        { property: 'og:image', content: ogImageStr },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: titleStr },
+        { name: 'twitter:description', content: () => descriptionStr.value.slice(0, 200) },
+        { name: 'twitter:image', content: ogImageStr },
+        { name: 'robots', content: () => (context.isCustom.value ? 'noindex,follow' : 'index,follow') },
+    ],
     link: [{ rel: 'canonical', href: canonicalUrl }],
-});
-
-useHead({
     script: [
         {
             type: 'application/ld+json',
             innerHTML: computed(() => {
-                if (!word.value) return '{}';
-                const breadcrumb = {
-                    '@context': 'https://schema.org',
-                    '@type': 'BreadcrumbList',
-                    itemListElement: [
-                        {
-                            '@type': 'ListItem',
-                            position: 1,
-                            name: 'Wordle Global',
-                            item: 'https://wordle.global/',
-                        },
-                        {
-                            '@type': 'ListItem',
-                            position: 2,
-                            name: `Wordle ${langNameNative.value}`,
-                            item: `https://wordle.global/${lang}`,
-                        },
-                        {
-                            '@type': 'ListItem',
-                            position: 3,
-                            name: word.value,
-                            item: canonicalUrl.value,
-                        },
-                    ],
-                };
-                const wordDateStr = primary.value?.basic?.word_date || '';
-                const definedTerm = defText.value
-                    ? {
-                          '@context': 'https://schema.org',
-                          '@type': 'DefinedTerm',
-                          name: word.value,
-                          description: defText.value,
-                          inDefinedTermSet: `https://wordle.global/${lang}/archive`,
-                          url: canonicalUrl.value,
-                          ...(wordDateStr && { dateModified: wordDateStr }),
-                      }
-                    : null;
-                return JSON.stringify(definedTerm ? [breadcrumb, definedTerm] : breadcrumb);
+                try {
+                    if (!word.value) return '{}';
+                    const breadcrumb = {
+                        '@context': 'https://schema.org',
+                        '@type': 'BreadcrumbList',
+                        itemListElement: [
+                            { '@type': 'ListItem', position: 1, name: 'Wordle Global', item: 'https://wordle.global/' },
+                            { '@type': 'ListItem', position: 2, name: `Wordle ${langNameNative.value}`, item: `https://wordle.global/${lang}` },
+                            { '@type': 'ListItem', position: 3, name: word.value, item: canonicalUrl.value },
+                        ],
+                    };
+                    const wordDateStr = primary.value?.basic?.word_date || '';
+                    const dict = dictionaryData.value;
+                    const definedTerm = defText.value
+                        ? {
+                              '@context': 'https://schema.org',
+                              '@type': 'DefinedTerm',
+                              name: word.value,
+                              description: defText.value,
+                              inDefinedTermSet: `https://wordle.global/${lang}/archive`,
+                              url: canonicalUrl.value,
+                              ...(wordDateStr && { dateModified: wordDateStr }),
+                              ...(dict?.pronunciation && { pronunciation: dict.pronunciation }),
+                              ...(dict?.etymology && { termCode: posText.value || undefined }),
+                          }
+                        : null;
+                    return JSON.stringify(definedTerm ? [breadcrumb, definedTerm] : breadcrumb);
+                } catch { return '{}'; }
             }) as unknown as string,
         },
     ],
 });
 
-// ── Image availability ──────────────────────────────────────────────────
-// We only render the AI image section when there's a cached image. The
-// image endpoint returns 404 when nothing has been pre-generated — we
-// probe once on mount and hide the section entirely if so. This avoids
-// the ugly typographic-fallback block that duplicates the headline.
-const imageExists = ref(false);
-async function probeImage() {
-    if (!word.value) return;
-    try {
-        const resp = await fetch(wordImageUrl(lang, word.value, dayIdx.value), {
-            method: 'HEAD',
-        });
-        imageExists.value = resp.ok;
-    } catch {
-        imageExists.value = false;
-    }
-}
-watch(word, probeImage);
-onMounted(probeImage);
+// ── Image ───────────────────────────────────────────────────────────────
+const imageUrl = computed(() => basicData.value?.image_url || null);
+const imageExpanded = ref(false);
+watch(word, () => { imageExpanded.value = false; });
 
 // ── Wiktionary link ─────────────────────────────────────────────────────
 const wiktionaryUrl = computed(() => {
@@ -428,91 +412,10 @@ function shareWord() {
     }
 }
 
-// ── Giscus — stable-key mapping so URL changes don't orphan threads ─────
-const GISCUS_LANGS = new Set([
-    'ar',
-    'be',
-    'bg',
-    'ca',
-    'cs',
-    'da',
-    'de',
-    'en',
-    'eo',
-    'es',
-    'eu',
-    'fa',
-    'fr',
-    'he',
-    'hu',
-    'id',
-    'it',
-    'ja',
-    'ko',
-    'nl',
-    'pl',
-    'pt',
-    'ro',
-    'ru',
-    'th',
-    'tr',
-    'uk',
-    'uz',
-    'vi',
-]);
-const giscusLang = GISCUS_LANGS.has(lang.slice(0, 2)) ? lang.slice(0, 2) : 'en';
-const giscusContainer = ref<HTMLElement | null>(null);
+// ── Comments key — scopes the comment thread to this language + word ────
+const commentKey = computed(() => (word.value ? `${lang}-${word.value}` : ''));
 
-let giscusListener: ((e: MessageEvent) => void) | null = null;
-function removeGiscusListener() {
-    if (giscusListener) {
-        window.removeEventListener('message', giscusListener);
-        giscusListener = null;
-    }
-}
-function mountGiscus() {
-    if (!giscusContainer.value || !word.value) return;
-    removeGiscusListener();
-    giscusContainer.value.innerHTML = '';
-    const script = document.createElement('script');
-    script.src = 'https://giscus.app/client.js';
-    script.setAttribute('data-repo', 'Hugo0/wordle');
-    script.setAttribute('data-repo-id', 'R_kgDOG5D4ng');
-    script.setAttribute('data-category', 'Announcements');
-    script.setAttribute('data-category-id', 'DIC_kwDOG5D4ns4C3DFk');
-    script.setAttribute('data-mapping', 'specific');
-    script.setAttribute('data-term', `${lang}-word-${word.value}`);
-    script.setAttribute('data-strict', '1');
-    script.setAttribute('data-reactions-enabled', '1');
-    script.setAttribute('data-emit-metadata', '1');
-    script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute(
-        'data-theme',
-        document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-    );
-    script.setAttribute('data-lang', giscusLang);
-    script.setAttribute('data-loading', 'lazy');
-    script.crossOrigin = 'anonymous';
-    script.async = true;
-    giscusContainer.value.appendChild(script);
-
-    giscusListener = (event: MessageEvent) => {
-        if (event.origin !== 'https://giscus.app') return;
-        const iframe = document.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
-        if (!iframe) return;
-        const isDark = document.documentElement.classList.contains('dark');
-        iframe.contentWindow?.postMessage(
-            { giscus: { setConfig: { theme: isDark ? 'dark' : 'light' } } },
-            'https://giscus.app'
-        );
-    };
-    window.addEventListener('message', giscusListener);
-}
-watch(word, (w) => {
-    if (w) mountGiscus();
-});
 onUnmounted(() => {
-    removeGiscusListener();
     prefetchTimers.forEach(clearTimeout);
     prefetchTimers = [];
 });
@@ -533,6 +436,29 @@ const subtitleText = computed(() => {
     if (!isDailyWord.value) return 'a portrait in meaning space';
     return '';
 });
+
+// Mode labels and icons from the canonical game mode UI config
+const modeLabels = Object.fromEntries(GAME_MODES_UI.map((m) => [m.id, m.label]));
+const modeIcons = Object.fromEntries(GAME_MODES_UI.map((m) => [m.id, m.icon]));
+
+const appearances = computed(() => basicData.value?.appearances ?? []);
+
+const dictionaryData = computed<DictionaryData | null>(() => {
+    const dict = basicData.value?.dictionary;
+    if (!dict?.senses || !word.value) return null;
+    return {
+        word: word.value,
+        entries: (dict.senses as DictionaryData['entries']) || [],
+        etymology: dict.etymology || undefined,
+        pronunciation: dict.pronunciation || undefined,
+        forms: (dict.forms as DictionaryData['forms']) || undefined,
+    };
+});
+
+const translations = computed(() => {
+    return (basicData.value?.dictionary?.translations as Array<{ code: string; word: string; hasPage: boolean; name: string }>) || [];
+});
+
 </script>
 
 <template>
@@ -550,66 +476,64 @@ const subtitleText = computed(() => {
                 <em>Loading…</em>
             </div>
 
-            <template v-else>
+            <div v-else class="word-content">
                 <div class="eyebrow text-center mb-5">{{ eyebrowText }}</div>
 
                 <div class="column">
                     <WordHeadline :word="word" :subtitle="subtitleText" size="lg" />
 
-                    <!-- Definition: show content or skeleton during transition -->
-                    <div
-                        v-if="transitioning && !primary.definition?.definition"
-                        class="definition-block skeleton-block"
-                    >
-                        <div class="skeleton-line w-3/4" />
-                        <div class="skeleton-line w-1/2" />
-                    </div>
-                    <div v-else-if="primary.definition?.definition" class="definition-block">
-                        <WordDefinition
-                            :word="word"
-                            :definition="primary.definition.definition"
-                            :part-of-speech="primary.definition.partOfSpeech"
-                            :ui="ui"
-                        />
-                        <a
-                            v-if="wiktionaryUrl"
-                            :href="wiktionaryUrl"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="wiktionary-link"
+                    <!-- Image (compact strip) + Definition — single editorial block -->
+                    <div class="word-card">
+                        <div
+                            v-if="imageUrl"
+                            class="image-wrap"
+                            @click="imageExpanded = !imageExpanded"
                         >
-                            Wiktionary →
-                        </a>
-                    </div>
-
-                    <!-- Image: only when a pre-generated image exists -->
-                    <div v-if="imageExists" class="image-wrap">
-                        <WordImage :word="word" :lang="lang" :day-idx="dayIdx" :size="400" />
-                    </div>
-
-                    <!-- SSR neighbor links: visible before client-side explore data
-                     loads. Provides internal link juice for crawlers and a
-                     visible "related words" section during hydration. Replaced
-                     by the interactive NearbyInMeaning graph once explore data
-                     arrives. -->
-                    <div
-                        v-if="!primary.explore && basicData?.nearest_words?.length"
-                        class="ssr-neighbors"
-                    >
-                        <div class="section-label">Related words</div>
-                        <div class="neighbor-links">
-                            <NuxtLink
-                                v-for="w in basicData.nearest_words"
-                                :key="w"
-                                :to="`/${lang}/word/${w}`"
-                                class="neighbor-link"
+                            <img
+                                :src="imageUrl"
+                                :alt="word"
+                                class="word-img"
+                                :class="{ expanded: imageExpanded }"
+                                loading="lazy"
+                            />
+                            <button
+                                class="image-expand-hint"
+                                :class="{ flipped: imageExpanded }"
+                                aria-label="Expand image"
                             >
-                                {{ w }}
-                            </NuxtLink>
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div
+                            v-if="transitioning && !primary.definition?.definition"
+                            class="definition-block skeleton-block"
+                        >
+                            <div class="skeleton-line w-3/4" />
+                            <div class="skeleton-line w-1/2" />
+                        </div>
+                        <div v-else-if="primary.definition?.definition" class="definition-block">
+                            <WordDefinition
+                                :word="word"
+                                :definition="primary.definition.definition"
+                                :part-of-speech="primary.definition.partOfSpeech"
+                                :ui="ui"
+                            />
+                            <a
+                                v-if="wiktionaryUrl"
+                                :href="wiktionaryUrl"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="wiktionary-link"
+                            >
+                                Wiktionary →
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Full interactive meaning map (English with embeddings) -->
+                    <!-- Meaning map — the hero visual, right after the word card -->
                     <NearbyInMeaning
                         v-if="primary.explore?.available"
                         :lang="lang"
@@ -623,18 +547,6 @@ const subtitleText = computed(() => {
                         @reset-to-auto="context.resetToAuto"
                     />
 
-                    <!-- Embeddings not available (non-English languages) -->
-                    <section
-                        v-else-if="primary.explore && !primary.explore.available"
-                        class="coming-soon-section"
-                    >
-                        <div class="section-label">Nearby in Meaning</div>
-                        <p class="coming-soon-text">
-                            Semantic maps are coming soon for {{ langNameNative }}.
-                        </p>
-                    </section>
-
-                    <!-- Skeleton for the graph during transitions -->
                     <div
                         v-if="transitioning && !primary.explore"
                         class="skeleton-block map-skeleton"
@@ -643,32 +555,95 @@ const subtitleText = computed(() => {
                         <div class="skeleton-map-box" />
                     </div>
 
-                    <!-- Appeared in: which daily modes featured this word -->
-                    <section v-if="isDailyWord" class="stats-section">
+                    <!-- Appeared in: game modes where this word was a daily word -->
+                    <section
+                        v-if="appearances.length"
+                        class="stats-section"
+                    >
                         <div class="section-label">Appeared In</div>
                         <div class="appeared-in">
-                            <div class="appeared-mode">
-                                <span class="appeared-mode-name">Classic Daily</span>
-                                <span class="appeared-mode-detail"
-                                    >#{{ dayIdx }} · {{ wordDate }}</span
-                                >
+                            <div
+                                v-for="app in appearances"
+                                :key="`${app.mode}-${app.dayIdx}`"
+                                class="appeared-mode"
+                            >
+                                <span class="appeared-mode-name">
+                                    <component
+                                        :is="modeIcons[app.mode]"
+                                        v-if="modeIcons[app.mode]"
+                                        :size="14"
+                                        class="mode-icon"
+                                    />
+                                    {{ modeLabels[app.mode] || app.mode }}
+                                    <span v-if="app.board != null" class="appeared-board">
+                                        Board {{ app.board + 1 }}
+                                    </span>
+                                </span>
+                                <span class="appeared-mode-detail">
+                                    #{{ app.dayIdx }} · {{ formatDateLong(app.date, lang) }}
+                                </span>
                             </div>
                         </div>
                     </section>
 
-                    <div class="share-wrap">
-                        <button class="text-btn accent" @click="shareWord">
-                            {{ shareBtnText }}
+                    <div class="actions-row">
+                        <button class="action-link" @click="shareWord">
+                            <Share2 :size="13" />
+                            <span>{{ shareBtnText }}</span>
                         </button>
-                        <NuxtLink :to="`/${lang}/archive`" class="text-btn"> ← archive </NuxtLink>
+                        <span class="action-sep">&middot;</span>
+                        <NuxtLink :to="`/${lang}/archive`" class="action-link">
+                            <Archive :size="13" />
+                            <span>Archive</span>
+                        </NuxtLink>
                     </div>
                 </div>
 
-                <section v-if="word" class="giscus-section">
-                    <div class="section-label">Discussion</div>
-                    <div ref="giscusContainer" class="giscus-mount" />
+                <!-- Comments -->
+                <section v-if="word && commentKey" class="comments-section-wrap">
+                    <WordComments
+                        target-type="word"
+                        :target-key="commentKey"
+                        :lang="lang"
+                        :appearances="appearances"
+                    />
                 </section>
-            </template>
+
+                <!-- Reference sections (collapsed, SEO-rich) -->
+                <div class="column reference-sections">
+                    <WordDictionary
+                        v-if="dictionaryData"
+                        :data="dictionaryData"
+                        :wiktionary-url="wiktionaryUrl"
+                        collapsed
+                    />
+
+                    <WordTranslations
+                        v-if="translations.length"
+                        :translations="translations"
+                        collapsed
+                    />
+
+                    <!-- Related words: always in DOM for SEO -->
+                    <div
+                        v-if="basicData?.nearest_words?.length"
+                        class="related-words"
+                        :class="{ 'sr-only-seo': primary?.explore?.available }"
+                    >
+                        <div class="related-words-label">Related Words</div>
+                        <div class="related-words-grid">
+                            <NuxtLink
+                                v-for="w in basicData.nearest_words"
+                                :key="w"
+                                :to="`/${lang}/word/${w}`"
+                                class="related-word-link"
+                            >
+                                {{ w }}
+                            </NuxtLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </AppShell>
 </template>
@@ -702,12 +677,15 @@ const subtitleText = computed(() => {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 24px;
 }
 
-.definition-block {
-    border-top: 1px solid var(--color-rule);
+.word-card {
+    border-top: 2px solid var(--color-ink);
     border-bottom: 1px solid var(--color-rule);
+    overflow: hidden;
+}
+.definition-block {
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -728,8 +706,43 @@ const subtitleText = computed(() => {
 }
 
 .image-wrap {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-rule);
+    cursor: pointer;
+}
+.image-wrap:hover .image-expand-hint {
+    opacity: 1;
+}
+.image-expand-hint {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
     display: flex;
+    align-items: center;
     justify-content: center;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 150ms ease, transform 200ms ease;
+    pointer-events: none;
+}
+.image-expand-hint.flipped {
+    transform: rotate(180deg);
+}
+.word-img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    max-height: 120px;
+    transition: max-height 300ms ease;
+}
+.word-img.expanded {
+    max-height: 480px;
 }
 
 .stats-section {
@@ -754,54 +767,91 @@ const subtitleText = computed(() => {
     font-size: 14px;
     font-weight: 600;
     color: var(--color-ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.mode-icon {
+    color: var(--color-muted);
+    flex-shrink: 0;
 }
 .appeared-mode-detail {
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--color-muted);
 }
+.appeared-board {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-left: 6px;
+}
 
 .section-label {
     margin-bottom: 16px;
 }
 
-.share-wrap {
+.actions-row {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 12px;
 }
-.giscus-section {
-    max-width: 720px;
-    margin: 48px auto 0;
-    padding-top: 32px;
+.action-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 120ms ease;
+}
+.action-link:hover {
+    color: var(--color-ink);
+}
+.action-sep {
+    color: var(--color-rule);
+    font-size: 14px;
+}
+.comments-section-wrap {
+    max-width: 640px;
+    margin: 32px auto 0;
+    padding-top: 24px;
     border-top: 1px solid var(--color-rule);
 }
-.giscus-mount {
-    min-height: 100px;
+.reference-sections {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 2px solid var(--color-ink);
 }
 
-/* ── SSR neighbor links (replaced by interactive graph on hydration) ── */
-.ssr-neighbors {
-    text-align: center;
+/* ── Related words (always in DOM for SEO) ── */
+.related-words {
+    border: 1px solid var(--color-rule);
+    padding: 16px 20px;
 }
-.coming-soon-section {
-    text-align: center;
-    padding: 32px 0;
-}
-.coming-soon-text {
-    font-family: var(--font-display);
-    font-size: 15px;
-    font-style: italic;
+.related-words-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     color: var(--color-muted);
-    margin: 0;
+    margin-bottom: 12px;
 }
-.neighbor-links {
+.related-words-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 8px;
 }
-.neighbor-link {
+.related-word-link {
     font-family: var(--font-display);
     font-size: 14px;
     font-weight: 600;
@@ -809,15 +859,25 @@ const subtitleText = computed(() => {
     padding: 4px 12px;
     border: 1px solid var(--color-rule);
     text-decoration: none;
-    transition:
-        border-color 120ms ease,
-        color 120ms ease;
+    transition: border-color 120ms ease, color 120ms ease;
 }
-.neighbor-link:hover {
+.related-word-link:hover {
     color: var(--color-accent);
     border-color: var(--color-accent);
 }
-
+/* Visually hidden but in DOM for Google — used when the interactive
+   meaning map already shows the same neighbors as interactive chips */
+.sr-only-seo {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
 /* ── Skeleton loading states ── */
 .skeleton-block {
     display: flex;
@@ -852,7 +912,7 @@ const subtitleText = computed(() => {
         padding: 16px 12px 60px;
     }
     .column {
-        gap: 28px;
+        gap: 20px;
     }
 }
 </style>

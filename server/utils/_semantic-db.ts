@@ -52,7 +52,7 @@ export async function loadAxes(lang: string = 'en'): Promise<AxisData[]> {
     >`SELECT name, low_anchor, high_anchor, vector::text, auc, range_p5, range_p95
       FROM wordle.semantic_axes WHERE lang = ${lang} ORDER BY name`;
 
-    const axes: AxisData[] = rows.map((r) => ({
+    const axes: AxisData[] = rows.map((r: { name: string; low_anchor: string; high_anchor: string; vector: string; auc: number | null; range_p5: number | null; range_p95: number | null }) => ({
         name: r.name,
         lowAnchor: r.low_anchor,
         highAnchor: r.high_anchor,
@@ -318,7 +318,7 @@ export async function batchGetRanks(
             SELECT word, rank FROM wordle.target_neighbors
             WHERE lang = ${lang} AND target_word = ${target} AND word = ANY(${words}::text[])
         `;
-        return new Map(rows.map((r) => [r.word, r.rank]));
+        return new Map(rows.map((r: { word: string; rank: number }) => [r.word, r.rank]));
     } catch {
         return new Map();
     }
@@ -397,7 +397,7 @@ export async function knnNearestByVector(
             ORDER BY embedding <=> ${vecStr}::vector
             LIMIT ${k}
         `;
-        return rows.map((r) => ({
+        return rows.map((r: { word: string; similarity: number; umap_x: number | null; umap_y: number | null; pca2d_x: number | null; pca2d_y: number | null }) => ({
             word: r.word,
             similarity: r.similarity,
             umapX: r.umap_x ?? undefined,
@@ -425,7 +425,7 @@ export async function getTargets(lang: string): Promise<string[]> {
             WHERE lang = ${lang} AND is_target = true
             ORDER BY word
         `;
-        const targets = rows.map((r) => r.word);
+        const targets = rows.map((r: { word: string }) => r.word);
         _targetsCache.set(lang, targets);
         return targets;
     } catch {

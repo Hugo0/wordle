@@ -12,11 +12,10 @@
  * Multi-board modes return `words: string[]` per entry (N words per day).
  * Semantic mode is English-only and returns target words from the semantic pool.
  */
-import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
-import { WORD_DEFS_DIR, requireLang, langResponseFields } from '../../utils/data-loader';
+import { requireLang, langResponseFields } from '../../utils/data-loader';
 import { getTodaysIdx, getWordForDay, getWordsForDay, idxToDate } from '../../utils/word-selection';
 import { loadWordStats } from '../../utils/word-stats';
+import { fetchDefinition } from '../../utils/definitions';
 import { getTodaysIdx as getTodaysIdxLib, toModeDayIdx, fromModeDayIdx } from '../../lib/day-index';
 import { GAME_MODE_CONFIG } from '~/utils/game-modes';
 import type { GameMode } from '~/utils/game-modes';
@@ -47,20 +46,19 @@ const ARCHIVE_MODES = new Set([
 ]);
 
 /**
- * Read a cached definition from disk without triggering LLM generation.
+ * Read a definition from the DB without triggering LLM generation.
+ * Uses the same fetchDefinition() as word pages — one code path for all surfaces.
  */
-function readCachedDefinition(
+async function readDefinition(
     word: string,
     langCode: string
-): { definition: string; part_of_speech?: string } | null {
-    const cachePath = join(WORD_DEFS_DIR, langCode, `${word.toLowerCase()}.json`);
-    if (!existsSync(cachePath)) return null;
+): Promise<{ definition: string; part_of_speech?: string } | null> {
     try {
-        const loaded = JSON.parse(readFileSync(cachePath, 'utf-8'));
-        if (loaded.not_found || !loaded.definition) return null;
+        const result = await fetchDefinition(word, langCode, { cacheOnly: true });
+        if (!result) return null;
         return {
-            definition: loaded.definition_native || loaded.definition,
-            part_of_speech: loaded.part_of_speech || undefined,
+            definition: result.definition_native || result.definition,
+            part_of_speech: result.part_of_speech || undefined,
         };
     } catch {
         return null;
@@ -185,11 +183,11 @@ export default defineEventHandler(async (event) => {
 
             // Definitions only make sense for single-word modes
             if (word && boardCount === 1) {
-                defResult = readCachedDefinition(word, lang);
+                defResult = await readDefinition(word, lang);
             }
         }
 
-        const stats = isToday ? null : loadWordStats(lang, classicIdx);
+        const stats = isToday ? null : await loadWordStats(lang, classicIdx);
 
         words.push({
             day_idx: idx,

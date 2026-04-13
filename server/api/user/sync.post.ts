@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
 
     // --- Game results (classic, dordle, quordle, semantic, etc.) ---
     if (body.gameResults && typeof body.gameResults === 'object') {
-        const rows: Parameters<typeof prisma.result.createMany>[0]['data'] = [];
+        const rows: NonNullable<Parameters<typeof prisma.result.createMany>[0]>['data'] = [];
 
         for (const [statsKey, results] of Object.entries(body.gameResults)) {
             if (!Array.isArray(results)) continue;
@@ -97,7 +97,7 @@ export default defineEventHandler(async (event) => {
 
     // --- Speed results ---
     if (body.speedResults && typeof body.speedResults === 'object') {
-        const rows: Parameters<typeof prisma.result.createMany>[0]['data'] = [];
+        const rows: NonNullable<Parameters<typeof prisma.result.createMany>[0]>['data'] = [];
 
         for (const [langCode, results] of Object.entries(body.speedResults)) {
             if (!Array.isArray(results)) continue;
@@ -156,7 +156,7 @@ export default defineEventHandler(async (event) => {
                 select: { id: true },
             });
             await prisma.userBadge.createMany({
-                data: badges.map((b) => ({ userId, badgeId: b.id })),
+                data: badges.map((b: { id: string }) => ({ userId, badgeId: b.id })),
                 skipDuplicates: true,
             });
         }

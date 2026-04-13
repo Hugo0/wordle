@@ -22,7 +22,7 @@ export async function evaluateBadges(userId: string, result: GameResultContext):
         where: { userId },
         select: { badge: { select: { slug: true } } },
     });
-    const earned = new Set(existingBadges.map((ub) => ub.badge.slug));
+    const earned = new Set(existingBadges.map((ub: { badge: { slug: string } }) => ub.badge.slug));
 
     const newBadges: string[] = [];
 
@@ -132,7 +132,7 @@ export async function computeBadgeProgress(userId: string): Promise<Record<strin
         'first-blood': totalWins,
         polyglot: distinctLangs.length,
         streak: streak,
-        mode: Math.max(0, ...modeCounts.map((m) => m._count)),
+        mode: Math.max(0, ...modeCounts.map((m: { mode: string; _count: number }) => m._count)),
     };
 }
 

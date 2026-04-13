@@ -20,6 +20,7 @@ export default defineNuxtConfig({
             autocapture: false,
             capture_pageview: 'history_change', // Auto-track SPA navigations
             capture_pageleave: false, // Disabled to reduce event volume (was ~61K/8 days)
+            // @ts-expect-error valid PostHog option not yet in type definitions
             enable_web_vitals: false, // Disabled to reduce event volume (was ~110K/8 days)
             session_recording: {
                 sampleRate: 0.03,

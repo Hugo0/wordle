@@ -157,9 +157,9 @@ function onBoardClick(_boardIndex: number) {
 const containerRef = ref<HTMLElement | null>(null);
 const scrollRef = ref<HTMLElement | null>(null);
 // null until measured — grid hidden until we know the real size (no layout shift)
-const containerWidth = ref<number | null>(null);
+const containerWidth = ref<number>(0);
 const containerHeight = ref(600);
-const measured = computed(() => containerWidth.value !== null);
+const measured = computed(() => containerWidth.value > 0);
 
 let resizeObserver: ResizeObserver | null = null;
 

@@ -20,7 +20,7 @@ export default defineEventHandler(async (event) => {
     });
 
     // Send email only if user exists and has a password (not Google-only)
-    if (user?.passwordHash) {
+    if (user?.passwordHash && user.email) {
         await sendPasswordResetEmail(user.id, user.email);
     }
 

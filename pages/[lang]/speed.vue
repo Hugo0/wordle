@@ -77,7 +77,7 @@ function startCountdown() {
         countdownNumber.value = 1;
     }, 2000);
     setTimeout(() => {
-        countdownNumber.value = langStore.config?.ui?.speed_go;
+        countdownNumber.value = langStore.config?.ui?.speed_go ?? 'GO!';
     }, 2700);
 }
 
@@ -188,7 +188,7 @@ onMounted(() => {
         :lang="lang"
         :language-name="config?.name_native || config?.name || lang"
         current-mode="speed"
-        :title="langStore.config?.ui?.speed_streak"
+        :title="langStore.config?.ui?.speed_streak ?? 'Speed Streak'"
         :subtitle="
             isDaily
                 ? `${config?.name_native || lang} · #${gameData?.mode_day_idx ?? gameData?.todays_idx}`

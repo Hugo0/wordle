@@ -22,7 +22,9 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
+import { Info } from 'lucide-vue-next';
 import MeaningMap, { type MapDot } from '~/components/shared/MeaningMap.vue';
+import BaseTooltip from '~/components/shared/BaseTooltip.vue';
 import AddCompareWord from './AddCompareWord.vue';
 import MapFrame from '~/components/shared/MapFrame.vue';
 import type { WordData } from '~/composables/useWordData';
@@ -278,7 +280,26 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
 
 <template>
     <section v-if="canShowMap" class="nearby">
-        <div class="section-label">Nearby in Meaning</div>
+        <div class="section-label">
+            Nearby in Meaning
+            <BaseTooltip>
+                <Info :size="13" class="info-icon" />
+                <template #content>
+                    <span class="tooltip-body">
+                        Words that mean similar things appear close together.
+                        Red lines connect the most closely related words.
+                        Brighter, larger dots indicate stronger similarity.
+                        <br /><br />
+                        The map is a simplified 2D view of how words relate
+                        in meaning — originally computed across hundreds of
+                        dimensions. Click any word to explore its neighborhood.
+                        <br /><br />
+                        The "slice by" chips let you compare words along specific
+                        dimensions, like formal vs. informal or concrete vs. abstract.
+                    </span>
+                </template>
+            </BaseTooltip>
+        </div>
 
         <div class="map-wrap">
             <MapFrame
@@ -387,6 +408,24 @@ const canShowMap = computed(() => mapDots.value.length >= 1);
     flex-direction: column;
     gap: 20px;
     padding: 8px 0;
+}
+
+.info-icon {
+    color: var(--color-muted);
+    vertical-align: middle;
+    margin-left: 4px;
+    cursor: help;
+    transition: color 120ms ease;
+}
+.info-icon:hover {
+    color: var(--color-ink);
+}
+
+.tooltip-body {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--color-paper);
 }
 
 .map-wrap {

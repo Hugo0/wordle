@@ -9,9 +9,9 @@ import pg from 'pg';
 // Singleton PrismaClient — reused across all Nitro handlers.
 // In development, Nitro hot-reloads server code; storing on globalThis
 // prevents leaked connections from stale module instances.
-const globalForPrisma = globalThis as unknown as { __prisma?: PrismaClient };
+const globalForPrisma = globalThis as unknown as { __prisma?: InstanceType<typeof PrismaClient> };
 
-function createClient(): PrismaClient {
+function createClient(): InstanceType<typeof PrismaClient> {
     const connectionString = process.env.DATABASE_URL;
     if (!connectionString) {
         console.warn('[prisma] DATABASE_URL not set — database features disabled');
@@ -41,7 +41,7 @@ function createClient(): PrismaClient {
     });
 }
 
-export const prisma: PrismaClient = globalForPrisma.__prisma ?? createClient();
+export const prisma: InstanceType<typeof PrismaClient> = globalForPrisma.__prisma ?? createClient();
 
 if (process.env.NODE_ENV !== 'production') {
     globalForPrisma.__prisma = prisma;

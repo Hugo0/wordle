@@ -108,7 +108,7 @@ const latestGuessWord = computed<string | null>(() => {
 const ui = computed(() => langStore.config?.ui);
 
 // --- Header meta ---
-const headerTitle = computed(() => ui.value?.semantic_title);
+const headerTitle = computed(() => ui.value?.semantic_title ?? 'Semantic Wordle');
 const headerSubtitle = computed(() => {
     const unlimitedLabel = ui.value?.semantic_unlimited;
     if (isUnlimited.value) return `${configVal.name_native || lang} · ${unlimitedLabel}`;
@@ -211,6 +211,7 @@ watch(
                     language: langStore.languageCode,
                     won: sem.won.value,
                     attempts: sem.guesses.value.length,
+                    streak_after: stats.stats.current_streak,
                     game_mode: 'semantic',
                     play_type: playType.value,
                     is_first_game: stats.stats.n_games === 0,
@@ -301,7 +302,7 @@ function onSliceToggle() {
     sem.toggleAxisSliceFromCompass();
     try {
         if (sem.mapMode.value === 'slice' && sem.sliceAxes.value) {
-            useAnalytics().trackCustomEvent?.('semantic_axis_slice_view', {
+            useAnalytics().trackCustomEvent('semantic_axis_slice_view', {
                 axis_x: sem.sliceAxes.value[0],
                 axis_y: sem.sliceAxes.value[1],
                 guess_number: sem.guesses.value.length,
@@ -316,7 +317,7 @@ function onSliceToggle() {
 async function onRequestLlmHint() {
     await sem.requestLlmHint();
     try {
-        useAnalytics().trackCustomEvent?.('semantic_llm_hint_used', {
+        useAnalytics().trackCustomEvent('semantic_llm_hint_used', {
             guess_number: sem.guesses.value.length,
         });
     } catch {
@@ -351,11 +352,7 @@ async function onShare() {
         emojiBoard: '',
         gameMode: 'semantic',
         onNotify: (message) => {
-            game.notification = {
-                message,
-                type: 'success',
-                ts: Date.now(),
-            } as typeof game.notification;
+            game.showNotification(message);
         },
     });
 }

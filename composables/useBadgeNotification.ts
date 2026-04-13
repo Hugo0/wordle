@@ -8,8 +8,8 @@
 export interface BadgeNotification {
     slug: string;
     name: string;
-    description: string;
-    icon: string;
+    description?: string;
+    icon?: string;
 }
 
 export function useBadgeNotification() {

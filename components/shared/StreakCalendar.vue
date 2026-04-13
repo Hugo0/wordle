@@ -186,11 +186,11 @@ const calendarDays = computed<CalendarDay[]>(() => {
 
         let state: CalendarDay['state'];
         if (isToday) {
-            state = detail?.state;
+            state = detail?.state ?? 'today';
         } else if (isFuture) {
             state = 'future';
         } else {
-            state = detail?.state;
+            state = detail?.state ?? 'missed';
         }
 
         days.push({

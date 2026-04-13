@@ -14,10 +14,11 @@ import { createHash } from 'crypto';
 import { existsSync, readFileSync, writeFileSync, mkdirSync, renameSync } from 'fs';
 import { join } from 'path';
 import { MIGRATION_DAY_IDX, WORD_HISTORY_DIR, loadAllData } from './data-loader';
+import { toModeDayIdx, fromModeDayIdx } from '../lib/day-index';
 
 // Re-export day index functions so existing consumers don't need to change imports
 export { getTodaysIdx, idxToDate } from '../lib/day-index';
-import { getTodaysIdx } from '../lib/day-index';
+import { getTodaysIdx, idxToDate } from '../lib/day-index';
 
 const RECENCY_WINDOW = 60;
 const EMPTY_SET: Set<string> = new Set();
@@ -257,6 +258,144 @@ export function iterateHistoricalWords(langCode: string): Array<{ dayIdx: number
     }));
     entries.sort((a, b) => b.dayIdx - a.dayIdx);
     return entries;
+}
+
+// ---------------------------------------------------------------------------
+// Cross-mode word appearances
+// ---------------------------------------------------------------------------
+
+export type WordAppearance = {
+    mode: string;
+    dayIdx: number;
+    date: string;
+    board?: number; // 0-indexed board slot for multi-board modes
+};
+
+const MODE_BOARD_COUNTS: Record<string, number> = {
+    classic: 1,
+    dordle: 2,
+    quordle: 4,
+    octordle: 8,
+    sedecordle: 16,
+    duotrigordle: 32,
+    speed: 1,
+};
+
+/**
+ * Lazy per-mode reverse index: word → { modeDayIdx, classicDayIdx, board }.
+ * Built once per (lang, mode) by replaying the deterministic hash selection.
+ * Pure in-memory — no disk writes.
+ *
+ * Non-classic modes launched April 11 2026. They use 1-based mode day indices
+ * (day 1 = April 11). Classic uses its own historical index (day 1 = 2021).
+ */
+type ModeReverseEntry = { modeDayIdx: number; classicDayIdx: number; board: number };
+type ModeReverseIndex = { built: number; map: Map<string, ModeReverseEntry> };
+const _modeReverseCache = new Map<string, ModeReverseIndex>();
+
+/** Modes that use 1-based mode day indices starting April 11 2026. */
+const USES_MODE_DAY_IDX = new Set([
+    'dordle', 'quordle', 'octordle', 'sedecordle', 'duotrigordle', 'speed', 'semantic',
+]);
+
+function ensureModeReverseIndex(langCode: string, mode: string): ModeReverseIndex {
+    const cacheKey = `${langCode}:${mode}`;
+    const classicToday = getTodaysIdx();
+    let cached = _modeReverseCache.get(cacheKey);
+
+    // Determine the classic day index range to scan
+    const usesModeDayIdx = USES_MODE_DAY_IDX.has(mode);
+    const startClassicIdx = usesModeDayIdx
+        ? fromModeDayIdx(1) // classic index of mode day 1
+        : MIGRATION_DAY_IDX + 1;
+
+    if (!cached) {
+        cached = { built: startClassicIdx - 1, map: new Map() };
+        _modeReverseCache.set(cacheKey, cached);
+    }
+    if (cached.built >= classicToday) return cached;
+
+    const data = loadAllData();
+    const dailyWords = data.dailyWords[langCode];
+    const pool = dailyWords && dailyWords.length > 0 ? dailyWords : data.wordLists[langCode]!;
+    if (!pool || pool.length === 0) return cached;
+
+    const blocklist = data.blocklists[langCode]!;
+    const ring = getHashRing(pool, langCode);
+    const modeOffset = MODE_SLOT_OFFSETS[mode] ?? 0;
+    const boardCount = MODE_BOARD_COUNTS[mode] ?? 1;
+    const recentWords: string[] = [];
+
+    const scanStart = Math.max(cached.built + 1, startClassicIdx);
+    for (let classicIdx = scanStart; classicIdx <= classicToday; classicIdx++) {
+        const exclude = new Set<string>(blocklist);
+        for (const rw of recentWords.slice(-RECENCY_WINDOW)) {
+            exclude.add(rw);
+        }
+
+        for (let b = 0; b < boardCount; b++) {
+            const slotIdx = b === 0
+                ? classicIdx + modeOffset
+                : classicIdx + modeOffset + b * MULTI_BOARD_SLOT_OFFSET;
+            const slotH = dayHash(slotIdx, langCode);
+            const selected = ringSelect(ring, slotH, exclude);
+            if (selected) {
+                exclude.add(selected);
+                recentWords.push(selected);
+                if (!cached.map.has(selected)) {
+                    const modeDayIdx = usesModeDayIdx
+                        ? (toModeDayIdx(classicIdx) ?? classicIdx)
+                        : classicIdx;
+                    cached.map.set(selected, {
+                        modeDayIdx,
+                        classicDayIdx: classicIdx,
+                        board: b,
+                    });
+                }
+            }
+        }
+    }
+    cached.built = classicToday;
+    return cached;
+}
+
+/**
+ * Find all game modes where a word appeared as a daily word.
+ * Classic uses the existing reverse index. Other modes use
+ * per-mode reverse indices built via in-memory hash computation.
+ */
+export function findWordAppearances(langCode: string, word: string): WordAppearance[] {
+    const w = word.toLowerCase();
+    const appearances: WordAppearance[] = [];
+
+    // Classic: O(1) via existing reverse index
+    const classicDay = getDayForWord(langCode, w);
+    if (classicDay != null) {
+        appearances.push({
+            mode: 'classic',
+            dayIdx: classicDay,
+            date: idxToDate(classicDay).toISOString().slice(0, 10),
+        });
+    }
+
+    // Other modes: O(1) lookup via per-mode reverse indices
+    for (const mode of Object.keys(MODE_SLOT_OFFSETS)) {
+        if (mode === 'classic') continue;
+        const idx = ensureModeReverseIndex(langCode, mode);
+        const entry = idx.map.get(w);
+        if (entry) {
+            const boardCount = MODE_BOARD_COUNTS[mode] ?? 1;
+            appearances.push({
+                mode,
+                dayIdx: entry.modeDayIdx,
+                date: idxToDate(entry.classicDayIdx).toISOString().slice(0, 10),
+                ...(boardCount > 1 ? { board: entry.board } : {}),
+            });
+        }
+    }
+
+    appearances.sort((a, b) => b.dayIdx - a.dayIdx);
+    return appearances;
 }
 
 // ---------------------------------------------------------------------------

@@ -3,6 +3,7 @@ import { usePageDirection } from '~/composables/usePageDirection';
 
 const { direction } = usePageDirection();
 const { showLoginModal, closeLoginModal } = useLoginModal();
+const { showReportModal, closeReportModal } = useReportModal();
 
 /** Direction-aware page transition. No 'out-in' — it causes blank screens
  *  because Nuxt's Suspense blocks the enter while out-in already removed
@@ -29,4 +30,5 @@ useHead({
     </NuxtLayout>
     <AccountBadgeEarned />
     <AccountLoginModal :visible="showLoginModal" @close="closeLoginModal" />
+    <ReportModal :visible="showReportModal" @close="closeReportModal" />
 </template>

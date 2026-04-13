@@ -62,19 +62,19 @@ export default defineEventHandler(async (event) => {
         throw createError({ statusCode: 400, message: 'Invalid word' });
     }
 
-    const openaiKey = process.env.OPENAI_API_KEY;
-    if (!openaiKey) {
-        throw createError({ statusCode: 404, message: 'Not available' });
-    }
-
     const cacheDir = join(WORD_IMAGES_DIR, lang);
     const cachePath = join(cacheDir, `${word.toLowerCase()}.webp`);
 
-    // Serve cached image
+    // Serve cached image (works even without API key)
     if (existsSync(cachePath)) {
         setResponseHeader(event, 'Content-Type', 'image/webp');
         setResponseHeader(event, 'Cache-Control', 'public, max-age=31536000');
         return readFileSync(cachePath);
+    }
+
+    const openaiKey = process.env.OPENAI_API_KEY;
+    if (!openaiKey) {
+        throw createError({ statusCode: 404, message: 'Not available' });
     }
 
     // Rate limit DALL-E generation (cached images bypass this)
@@ -132,7 +132,7 @@ export default defineEventHandler(async (event) => {
             n: 1,
         });
 
-        const imageUrl = response.data[0]?.url;
+        const imageUrl = response.data?.[0]?.url;
         if (!imageUrl?.startsWith('https://')) {
             throw new Error('Image generation returned no URL');
         }

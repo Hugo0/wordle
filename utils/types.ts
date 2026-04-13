@@ -137,6 +137,8 @@ export interface LanguageText {
     hard_mode_position?: string;
     hard_mode_contains?: string;
     win_words?: string;
+    share_challenge_lose?: string;
+    share_challenge_win?: string;
 }
 
 export interface LanguageHelp {
@@ -159,6 +161,20 @@ export interface LanguageHelp {
     speed_scoring_explanation?: string;
     speed_pressure?: string;
     speed_pressure_explanation?: string;
+    // Semantic mode
+    semantic_subtitle?: string;
+    semantic_rank_title?: string;
+    semantic_rank_explanation?: string;
+    semantic_rank_found?: string;
+    semantic_compass_title?: string;
+    semantic_compass_explanation?: string;
+    semantic_compass_latest_guess?: string;
+    semantic_compass_toward?: string;
+    semantic_map_title?: string;
+    semantic_map_explanation?: string;
+    semantic_oracle_title?: string;
+    semantic_oracle_explanation?: string;
+    semantic_footer?: string;
 }
 
 export interface UiStrings {
@@ -342,6 +358,8 @@ export interface UiStrings {
     mode_multiboard_label?: string;
     mode_custom_label?: string;
     mode_custom_desc?: string;
+    mode_classic_label?: string;
+    mode_classic_desc?: string;
     mode_party_label?: string;
     mode_party_desc?: string;
     // Semantic Explorer
@@ -396,6 +414,9 @@ export interface UiStrings {
     semantic_unavailable?: string;
     semantic_retry?: string;
     semantic_unlimited?: string;
+    // Sidebar
+    sidebar_play?: string;
+    sidebar_you?: string;
 }
 
 export interface LanguageConfig {

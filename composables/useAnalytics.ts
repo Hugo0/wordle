@@ -674,6 +674,15 @@ export function useAnalytics() {
     };
 
     /**
+     * Track a custom event with arbitrary params.
+     * Use for one-off feature-specific events (e.g. semantic mode interactions)
+     * that don't warrant a dedicated typed method.
+     */
+    const trackCustomEvent = (eventName: string, params?: Record<string, unknown>): void => {
+        track(eventName, params);
+    };
+
+    /**
      * Register game_mode as a PostHog super property on all future events.
      * Auto-attaches game_mode to every subsequent capture() call.
      * Call whenever gameConfig.mode changes.
@@ -772,6 +781,8 @@ export function useAnalytics() {
         registerLanguage,
         registerGameMode,
         trackGameRoundStart,
+        // Custom
+        trackCustomEvent,
         // Init
         initAbandonTracking,
         // PostHog user identification

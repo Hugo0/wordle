@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
         },
     });
 
-    await sendVerificationEmail(user.id, user.email);
+    await sendVerificationEmail(user.id, user.email!);
 
     await setSessionForUser(event, user, 'email');
 

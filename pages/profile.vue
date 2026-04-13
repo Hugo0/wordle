@@ -6,6 +6,7 @@
  * Uses the editorial design system (Fraunces + Source Sans 3 + design tokens).
  * All data comes from localStorage game_results — no server data.
  */
+import type { Component } from 'vue';
 import { readJson } from '~/utils/storage';
 import { useAnimatedNumber } from '~/composables/useAnimatedNumber';
 import { BarChart2, Flame, Square, Zap, ChevronRight, Download } from 'lucide-vue-next';
@@ -23,7 +24,7 @@ const pwaInstall = import.meta.client
     ? inject<{
           install: () => void;
           status: () => { isStandalone: boolean; hasPrompt: boolean; isIOS: boolean };
-      }>('pwaInstall', undefined)
+      }>('pwaInstall')
     : undefined;
 const showInstallCta = computed(() => {
     if (!import.meta.client) return false;
@@ -67,7 +68,7 @@ interface PerLangStats {
 interface ModeStats {
     mode: GameMode;
     label: string;
-    icon: typeof Square;
+    icon: Component;
     games: number;
     wins: number;
     winPct: number;

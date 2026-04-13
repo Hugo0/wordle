@@ -33,6 +33,7 @@ model User {
     credentials   Credential[]
     badges        UserBadge[]
     subscription  Subscription?
+    comments      Comment[]
 
     @@map("users")
     @@schema("wordle")
@@ -153,6 +154,44 @@ model Subscription {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
+// Comments & User Input
+// Unified table for all user-submitted content: word comments, leaderboard
+// discussion, bug reports, and feedback. The `type` field distinguishes them.
+// ═══════════════════════════════════════════════════════════════════════════
+
+model Comment {
+    id         String   @id @default(cuid())
+    userId     String?  @map("user_id")
+
+    /// What kind of entry: 'comment', 'report', 'feedback'
+    type       String
+
+    /// Scoping for comments: targetType + targetKey identify what this is about.
+    /// Reports/feedback leave these null (they're global, not attached to content).
+    /// Future comments: targetType='word' targetKey='en-hello',
+    /// or targetType='leaderboard' targetKey='en-classic-1756'.
+    targetType String?  @map("target_type")
+    targetKey  String?  @map("target_key")
+
+    body       String
+
+    /// Structured context — reports store {url, userAgent, screenSize, isPwa, lang, mode}
+    metadata   Json?
+
+    /// Soft-delete / moderation flag
+    hidden     Boolean  @default(false)
+
+    createdAt  DateTime @default(now()) @map("created_at")
+
+    user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+    @@index([type, targetType, targetKey, createdAt])
+    @@index([userId])
+    @@map("comments")
+    @@schema("wordle")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
 // Caches (replacing disk-based JSON files)
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -173,6 +212,12 @@ model Definition {
     url              String?
     isNegative       Boolean  @default(false) @map("is_negative")
     cachedAt         DateTime @default(now()) @map("cached_at")
+    // Rich dictionary data from kaikki.org (Wiktionary structured extract)
+    senses           Json?    // [{pos, glosses: [{gloss, examples?, tags?}]}]
+    etymology        String?
+    pronunciation    String?  // IPA
+    forms            Json?    // [{form, tags}]
+    translations     Json?    // {lang_code: word} — cross-language equivalents
 
     @@unique([lang, word])
     @@map("definitions")
@@ -224,6 +269,25 @@ model SemanticHint {
 
     @@unique([lang, word])
     @@map("semantic_hints")
+    @@schema("wordle")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// Semantic Explorer — Pre-computed Neighbors
+// Top-N nearest words per target, ranked by cosine similarity.
+// Seeded by scripts/seed-semantic-db.ts. Used for game hints and word pages.
+// ═══════════════════════════════════════════════════════════════════════════
+
+model TargetNeighbor {
+    lang       String  @default("en")
+    targetWord String  @map("target_word")
+    word       String
+    rank       Int
+    cosine     Float   @db.Real
+
+    @@id([lang, targetWord, word])
+    @@index([lang, targetWord, rank], map: "target_neighbors_lookup_idx")
+    @@map("target_neighbors")
     @@schema("wordle")
 }
 

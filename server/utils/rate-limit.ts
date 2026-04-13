@@ -65,7 +65,7 @@ export function rateLimit(
     entry.count++;
     if (entry.count > maxRequests) {
         const retryAfter = Math.ceil((entry.resetAt - now) / 1000);
-        setResponseHeader(event, 'Retry-After', String(retryAfter));
+        setResponseHeader(event, 'Retry-After', retryAfter);
         throw createError({
             statusCode: 429,
             message: 'Too many requests. Please try again later.',

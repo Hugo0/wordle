@@ -5,18 +5,28 @@
  * Resolution + validation are delegated to `resolveWordSlug`, which also
  * fixes up Unicode word slugs for non-English languages.
  */
-import { loadAllData, requireLang, langResponseFields } from '../../../utils/data-loader';
+import { existsSync } from 'fs';
+import { join } from 'path';
+import {
+    loadAllData,
+    requireLang,
+    langResponseFields,
+    WORD_IMAGES_DIR,
+} from '../../../utils/data-loader';
+import { wordImagePath } from '~/utils/wordUrls';
 import {
     getTodaysIdx,
     getWiktLang,
     idxToDate,
     resolveWordSlug,
+    findWordAppearances,
 } from '../../../utils/word-selection';
 import { loadWordStats } from '../../../utils/word-stats';
 import { fetchDefinition } from '../../../utils/definitions';
 import { checkWiktionaryExists } from '../../../utils/wiktionary';
 import * as semanticDb from '~/server/utils/_semantic-db';
 import { getValidWords } from '~/server/plugins/semantic-warmup';
+import { prisma } from '~/server/utils/prisma';
 import type { WordStats } from '~/utils/types';
 
 // Module-level Set cache so we don't rebuild on every request. wordLists
@@ -107,10 +117,30 @@ export default defineEventHandler(async (event) => {
     const cacheOnly = clientCacheOnly || !isGameWord;
 
     let wiktionaryExists = false;
+    let dictionary: {
+        senses: unknown;
+        etymology?: string | null;
+        pronunciation?: string | null;
+        forms?: unknown;
+        translations?: unknown;
+    } | null = null;
+
     if (word) {
-        const [defResult, wiktResult] = await Promise.all([
+        const [defResult, wiktResult, dictRow] = await Promise.all([
             fetchDefinition(word, lang, { cacheOnly }).catch(() => null),
             checkWiktionaryExists(word, lang).catch(() => null),
+            prisma.definition
+                .findUnique({
+                    where: { lang_word: { lang, word: word.toLowerCase() } },
+                    select: {
+                        senses: true,
+                        etymology: true,
+                        pronunciation: true,
+                        forms: true,
+                        translations: true,
+                    },
+                })
+                .catch(() => null),
         ]);
         if (defResult) {
             definition = {
@@ -120,6 +150,40 @@ export default defineEventHandler(async (event) => {
             };
         }
         wiktionaryExists = wiktResult === true;
+        if (dictRow?.senses || dictRow?.translations) {
+            // Tag translations: linkable (word exists in our lists) vs display-only
+            let translationsList: Array<{
+                code: string;
+                word: string;
+                hasPage: boolean;
+                name: string;
+            }> | null = null;
+            if (dictRow?.translations && typeof dictRow.translations === 'object') {
+                const raw = dictRow.translations as Record<string, string>;
+                translationsList = [];
+                for (const [code, tw] of Object.entries(raw)) {
+                    if (data.languageCodes.includes(code) && code !== lang) {
+                        const wordSet = getWordSet(code, data);
+                        const langConfig = data.configs[code];
+                        translationsList.push({
+                            code,
+                            word: tw,
+                            hasPage: wordSet.has(tw.toLowerCase()),
+                            name: langConfig?.name || code,
+                        });
+                    }
+                }
+                translationsList.sort((a, b) => a.name.localeCompare(b.name));
+                if (translationsList.length === 0) translationsList = null;
+            }
+            dictionary = {
+                senses: dictRow?.senses || null,
+                etymology: dictRow?.etymology,
+                pronunciation: dictRow?.pronunciation,
+                forms: dictRow?.forms,
+                translations: translationsList,
+            };
+        }
     }
 
     // Nearest words for SSR internal link juice via pgvector HNSW — ~10ms.
@@ -133,6 +197,16 @@ export default defineEventHandler(async (event) => {
             // DB unavailable — skip
         }
     }
+
+    let imageUrl: string | null = null;
+    if (word) {
+        const imgPath = join(WORD_IMAGES_DIR, lang, `${word.toLowerCase()}.webp`);
+        if (existsSync(imgPath)) {
+            imageUrl = wordImagePath(lang, word, dayIdx);
+        }
+    }
+
+    const appearances = word ? findWordAppearances(lang, word) : [];
 
     return {
         ...langResponseFields(lang, config),
@@ -149,5 +223,8 @@ export default defineEventHandler(async (event) => {
         wikt_lang: getWiktLang(lang),
         wiktionary_exists: wiktionaryExists,
         nearest_words: nearestWords,
+        image_url: imageUrl,
+        appearances,
+        dictionary,
     };
 });

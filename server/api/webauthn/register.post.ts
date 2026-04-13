@@ -13,6 +13,16 @@ import { prisma } from '~/server/utils/prisma';
 import { sanitizeUsername, generateUniqueUsername } from '~/server/utils/name-generator';
 
 export default defineWebAuthnRegisterEventHandler({
+    // Force platform authenticator (Face ID / Touch ID) and make credential discoverable
+    async getOptions() {
+        return {
+            authenticatorSelection: {
+                authenticatorAttachment: 'platform' as const,
+                residentKey: 'required' as const,
+                userVerification: 'preferred' as const,
+            },
+        };
+    },
     async validateUser(userBody, event) {
         const session = await getUserSession(event);
 

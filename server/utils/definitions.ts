@@ -219,21 +219,48 @@ export async function fetchDefinition(
     // --- DB cache (includes LLM, kaikki, and kaikki-en definitions) ---
     const dbResult = dbCache ? await dbCache.getDefinition(langCode, word.toLowerCase()) : null;
     if (dbResult) {
-        if (dbResult.isNegative && !options.skipNegativeCache) return null;
-        if (!dbResult.isNegative) {
+        // Negative cache entries: skip if kaikki senses exist (don't let a
+        // failed LLM call block richer structured data)
+        if (dbResult.isNegative && !options.skipNegativeCache) {
+            // Check if structured kaikki data exists despite the negative flag
+            const row = dbResult as Record<string, any>;
+            if (!row.senses) return null;
+            // Fall through — senses exist, derive definition below
+        }
+
+        if (!dbResult.isNegative || (dbResult as Record<string, any>).senses) {
             // kaikki-en fallback entries expire after 24h so LLM can retry
             const isStaleKaikkiEn =
                 dbResult.source === 'kaikki-en' &&
                 !dbResult.definitionNative &&
                 Date.now() - dbResult.cachedAt.getTime() >= NEGATIVE_CACHE_TTL * 1000;
-            if (!isStaleKaikkiEn) {
+
+            // Derive definition from structured senses when no LLM definition
+            let definition = dbResult.definition;
+            let definitionNative = dbResult.definitionNative;
+            let partOfSpeech = dbResult.partOfSpeech;
+            const senses = (dbResult as Record<string, any>).senses;
+
+            if (!definition && senses && Array.isArray(senses)) {
+                // Extract first gloss from first POS entry
+                for (const entry of senses) {
+                    const glosses = entry?.glosses;
+                    if (Array.isArray(glosses) && glosses.length > 0) {
+                        definition = glosses[0]?.gloss || null;
+                        if (!partOfSpeech) partOfSpeech = entry.pos || null;
+                        break;
+                    }
+                }
+            }
+
+            if ((definition || definitionNative) && !isStaleKaikkiEn) {
                 return {
-                    definition: dbResult.definition,
-                    definition_native: dbResult.definitionNative,
+                    definition,
+                    definition_native: definitionNative,
                     definition_en: dbResult.definitionEn,
-                    part_of_speech: dbResult.partOfSpeech,
+                    part_of_speech: partOfSpeech,
                     confidence: dbResult.confidence,
-                    source: dbResult.source,
+                    source: dbResult.source || 'kaikki',
                     url: dbResult.url,
                 };
             }
@@ -248,28 +275,32 @@ export async function fetchDefinition(
     const result = await dedup('definition', dedupKey, async () => {
         const llmResult = await callLlmDefinition(word, langCode);
 
-        // Cache result to DB
+        // Cache result to DB — but never overwrite kaikki senses with a negative entry
         const isNeg = !llmResult;
-        try {
-            await dbCache?.upsertDefinition(
-                langCode,
-                word.toLowerCase(),
-                llmResult
-                    ? {
-                          definition: llmResult.definition,
-                          definitionNative: llmResult.definition_native,
-                          definitionEn: llmResult.definition_en,
-                          partOfSpeech: llmResult.part_of_speech,
-                          confidence: llmResult.confidence,
-                          source: llmResult.source,
-                          model: LLM_MODEL,
-                          url: llmResult.url,
-                      }
-                    : {},
-                isNeg
-            );
-        } catch (e) {
-            consola.warn(`[definitions] DB write failed for ${langCode}/${word}:`, e);
+        if (isNeg && dbResult && (dbResult as Record<string, any>).senses) {
+            // Kaikki data exists — don't write negative over it
+        } else {
+            try {
+                await dbCache?.upsertDefinition(
+                    langCode,
+                    word.toLowerCase(),
+                    llmResult
+                        ? {
+                              definition: llmResult.definition,
+                              definitionNative: llmResult.definition_native,
+                              definitionEn: llmResult.definition_en,
+                              partOfSpeech: llmResult.part_of_speech,
+                              confidence: llmResult.confidence,
+                              source: llmResult.source,
+                              model: LLM_MODEL,
+                              url: llmResult.url,
+                          }
+                        : {},
+                    isNeg
+                );
+            } catch (e) {
+                consola.warn(`[definitions] DB write failed for ${langCode}/${word}:`, e);
+            }
         }
 
         return llmResult;

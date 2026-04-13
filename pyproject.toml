@@ -7,6 +7,7 @@ dependencies = [
     "arabic-reshaper>=3.0.0",
     "grapheme>=0.6.0",
     "openai>=2.21.0",
+    "pg8000>=1.31.5",
     "pillow>=12.1.1",
     "python-bidi==0.4.2",
 ]

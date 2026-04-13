@@ -5,7 +5,9 @@
 docs/
 
 # Design exploration HTML mockups (local only)
+design/
 public/design-explorations/
+public/comments-exploration.html
 
 # Node.js / Frontend
 node_modules/
@@ -48,6 +50,9 @@ scripts/.freq_data
 
 # Curation review temp files
 scripts/.curation_review/
+
+# Processed kaikki dictionary data (190MB+, regenerate with import_dictionary.py)
+scripts/.kaikki_processed/
 .mcp.json
 
 # Archive (legacy assets, not tracked)

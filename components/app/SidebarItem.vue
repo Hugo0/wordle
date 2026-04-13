@@ -4,7 +4,7 @@
         :to="href"
         class="sidebar-item w-full"
         :class="{ 'sidebar-item-active': active }"
-        @click="$emit('click')"
+        @click="handleClick"
     >
         <span class="item-icon w-5 text-center flex items-center justify-center">
             <component :is="iconComponent" :size="18" class="text-current" />
@@ -50,6 +50,7 @@
 import {
     Square,
     Infinity as InfinityIcon,
+    Bug,
     Columns2,
     Columns3,
     Grid2x2,
@@ -83,11 +84,27 @@ const props = withDefaults(
     }
 );
 
-defineEmits<{ click: [] }>();
+const emit = defineEmits<{ click: [] }>();
+
+const route = useRoute();
+
+function handleClick() {
+    emit('click');
+    // If the href has a hash and we're already on the same page, scroll to the element
+    if (props.href?.includes('#')) {
+        const [path, hash] = props.href.split('#');
+        if (route.path === path || (!path && route.hash === `#${hash}`)) {
+            nextTick(() => {
+                document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+    }
+}
 
 const iconMap: Record<string, any> = {
     Square,
     Infinity: InfinityIcon,
+    Bug,
     Columns2,
     Columns3,
     Grid2x2,

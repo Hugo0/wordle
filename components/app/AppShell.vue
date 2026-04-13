@@ -8,7 +8,7 @@
             :lang-code="lang"
             :language-name="langName"
             :is-rtl="isRtl"
-            :current-mode="currentMode"
+            :current-mode="currentMode ?? undefined"
             :ui="ui"
             @close="sidebarOpen = false"
             @select-mode="onSelectMode"

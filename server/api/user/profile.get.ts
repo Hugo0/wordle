@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
         email: user.email,
         createdAt: user.createdAt,
         settings: user.settings,
-        badges: user.badges.map((ub) => ({
+        badges: user.badges.map((ub: { badge: { slug: string; name: string; description: string; category: string; icon: string }; earnedAt: Date }) => ({
             slug: ub.badge.slug,
             name: ub.badge.name,
             description: ub.badge.description,

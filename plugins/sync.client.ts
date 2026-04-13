@@ -30,6 +30,7 @@ import {
     runStorageMigration,
     STORAGE_KEYS,
 } from '~/utils/storage';
+import { $fetch as ofetch } from 'ofetch';
 import type { GameResults, SpeedResults } from '~/utils/types';
 
 interface ServerResult {
@@ -216,7 +217,7 @@ async function pullResults(userId: string) {
             ? `/api/user/stats?since=${encodeURIComponent(lastSync)}`
             : '/api/user/stats';
 
-        const { results, settings: serverSettings } = (await $fetch(url)) as {
+        const { results, settings: serverSettings } = (await ofetch(url)) as {
             results: ServerResult[];
             settings: Record<string, boolean | string>;
         };

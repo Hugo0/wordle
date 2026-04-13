@@ -52,6 +52,30 @@ export type WordBasic = {
     definition: WordBasicDefinition | null;
     /** Top 8 nearest neighbor words for SSR link juice + prefetch seed */
     nearest_words?: string[];
+    /** Pre-resolved image URL (server checks disk cache, avoids client HEAD probe) */
+    image_url?: string | null;
+    /** All game modes where this word appeared as a daily word */
+    appearances?: Array<{
+        mode: string;
+        dayIdx: number;
+        date: string;
+        board?: number;
+    }>;
+    /** Structured dictionary data from Wiktionary/kaikki */
+    dictionary?: {
+        senses: Array<{
+            pos: string;
+            glosses: Array<{
+                gloss: string;
+                examples?: Array<{ text: string; translation?: string }>;
+                tags?: string[];
+            }>;
+        }>;
+        etymology?: string | null;
+        pronunciation?: string | null;
+        forms?: Array<{ form: string; tags: string[] }> | null;
+        translations?: Array<{ code: string; word: string; hasPage: boolean; name: string }> | null;
+    } | null;
 };
 
 export type NeighborEntry = {

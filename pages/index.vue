@@ -40,7 +40,7 @@ const pwaInstall = import.meta.client
               hasPrompt: boolean;
               isIOS: boolean;
           };
-      }>('pwaInstall', undefined)
+      }>('pwaInstall')
     : undefined;
 const showPwaInstall = ref(false);
 

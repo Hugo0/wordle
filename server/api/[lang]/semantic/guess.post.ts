@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
 
     const allProjectionsNormalized = semanticDb.projectAxes(guessVec);
 
-    let compassResult = { hints: [] as any[], status: 'close' as const, totalExplained: 0 };
+    let compassResult: { hints: any[]; status: 'ok' | 'close'; totalExplained: number } = { hints: [], status: 'close', totalExplained: 0 };
     const cachedAxes = semanticDb.getCachedAxes();
     if (cachedAxes) {
         try {

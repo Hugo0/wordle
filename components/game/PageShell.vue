@@ -178,7 +178,7 @@ const emit = defineEmits<{ toggleSidebar: []; closeSidebar: []; newGame: []; res
 const game = useGameStore();
 
 // Header flag icon
-const headerFlagSrc = computed(() => useFlag(props.lang));
+const headerFlagSrc = computed(() => useFlag(props.lang) ?? undefined);
 
 // Sub-panel: when subtitle is clicked, open sidebar WITH sub-panel visible
 const showSubPanelOnOpen = ref(false);

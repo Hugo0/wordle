@@ -44,7 +44,7 @@ export async function generateUniqueUsername(base: string): Promise<string> {
         where: { username: { startsWith: sanitized } },
         select: { username: true },
     });
-    const takenSet = new Set(taken.map((u) => u.username));
+    const takenSet = new Set(taken.map((u: { username: string }) => u.username));
 
     if (!takenSet.has(sanitized)) return sanitized;
 

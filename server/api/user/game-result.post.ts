@@ -108,14 +108,14 @@ export default defineEventHandler(async (event) => {
 
             // Create UserBadge rows
             await prisma.userBadge.createMany({
-                data: badges.map((b) => ({
+                data: badges.map((b: { id: string; slug: string; name: string; description: string; icon: string }) => ({
                     userId,
                     badgeId: b.id,
                 })),
                 skipDuplicates: true,
             });
 
-            newBadges = badges.map((b) => ({
+            newBadges = badges.map((b: { id: string; slug: string; name: string; description: string; icon: string }) => ({
                 slug: b.slug,
                 name: b.name,
                 description: b.description,

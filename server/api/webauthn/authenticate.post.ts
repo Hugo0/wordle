@@ -3,12 +3,18 @@
  *
  * Following the official nuxt-auth-utils playground pattern.
  */
+import type { AuthenticatorTransportFuture } from '@simplewebauthn/server';
 import { prisma } from '~/server/utils/prisma';
 
 export default defineWebAuthnAuthenticateEventHandler({
     async allowCredentials(event, userName) {
-        const user = await prisma.user.findUnique({
-            where: { email: userName },
+        // Look up by username (passkey users have null email).
+        // For discoverable credential / conditional mediation flow,
+        // the library skips this callback entirely when userName is empty.
+        const user = await prisma.user.findFirst({
+            where: {
+                OR: [{ username: userName }, { email: userName }],
+            },
             include: { credentials: true },
         });
 
@@ -16,9 +22,9 @@ export default defineWebAuthnAuthenticateEventHandler({
             throw createError({ statusCode: 400, message: 'User not found' });
         }
 
-        return user.credentials.map((c) => ({
+        return user.credentials.map((c: { credentialId: string; transports: string | string[] }) => ({
             id: c.credentialId,
-            transports: c.transports as string[],
+            transports: c.transports as AuthenticatorTransportFuture[],
         }));
     },
     async getCredential(event, credentialId) {

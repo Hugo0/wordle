@@ -240,11 +240,13 @@
                         icon="ChartNoAxesCombined"
                         :label="ui?.statistics || 'Statistics'"
                         href="/profile#statistics"
+                        @click="close()"
                     />
                     <SidebarItem
                         icon="Award"
                         :label="ui?.badges || 'Badges'"
                         href="/profile#badges"
+                        @click="close()"
                     />
                     <SidebarItem
                         icon="Settings"
@@ -254,19 +256,11 @@
                             close();
                         "
                     />
-                    <a
-                        :href="bugReportUrl"
-                        target="_blank"
-                        rel="noopener"
-                        class="sidebar-item w-full"
-                    >
-                        <span class="item-icon w-5 flex items-center justify-center">
-                            <Bug :size="18" class="text-current" />
-                        </span>
-                        <span class="text-sm text-ink">{{
-                            ui?.report_issue || 'Report a bug'
-                        }}</span>
-                    </a>
+                    <SidebarItem
+                        icon="Bug"
+                        :label="ui?.report_issue || 'Report a bug'"
+                        @click="openReportModal(); close()"
+                    />
                 </div>
 
                 <!-- Explore section -->
@@ -276,11 +270,13 @@
                         icon="Trophy"
                         label="Leaderboard"
                         :href="`/leaderboard?lang=${langCode}`"
+                        @click="close()"
                     />
                     <SidebarItem
                         icon="Calendar"
                         :label="ui?.archive || 'Archive'"
                         :href="`/${langCode}/archive`"
+                        @click="close()"
                     />
                 </div>
 
@@ -354,7 +350,6 @@ import {
     Globe,
     ChevronRight,
     ChevronDown,
-    Bug,
     Grid2x2,
     CalendarDays,
     Infinity as InfinityIcon,
@@ -399,6 +394,7 @@ const emit = defineEmits<{
 
 const { loggedIn, user, avatarUrl: authAvatarUrl, loginWithGoogle, logout } = useAuth();
 const { openLoginModal } = useLoginModal();
+const { openReportModal } = useReportModal();
 const route = useRoute();
 
 const sidebarEl = ref<HTMLElement | null>(null);
@@ -541,34 +537,6 @@ const disabledModes = computed(() =>
     GAME_MODES_UI.filter((m) => !m.enabled && m.id !== 'unlimited')
 );
 
-// Pre-fill bug report with language, mode, and device info
-const bugReportUrl = computed(() => {
-    const params = new URLSearchParams({
-        template: 'bug.yml',
-        labels: 'bug',
-        language: props.langCode || '',
-    });
-    if (import.meta.client) {
-        const ua = navigator.userAgent;
-        const platform = /iPhone|iPad/.test(ua)
-            ? 'iOS'
-            : /Android/.test(ua)
-              ? 'Android'
-              : /Mac/.test(ua)
-                ? 'Mac'
-                : /Windows/.test(ua)
-                  ? 'Windows'
-                  : 'Other';
-        params.set(
-            'device',
-            `${platform} / ${navigator.userAgent.split(') ').pop()?.split('/')[0] || 'Unknown'}`
-        );
-    }
-    if (props.currentMode && props.currentMode !== 'classic') {
-        params.set('title', `Bug in ${props.currentMode} mode (${props.langCode})`);
-    }
-    return `https://github.com/Hugo0/wordle/issues/new?${params}`;
-});
 </script>
 
 <style scoped>
