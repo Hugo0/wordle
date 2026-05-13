@@ -6,6 +6,9 @@ from flask import (
     url_for,
     request,
 )
+
+from werkzeug.middleware.proxy_fix import ProxyFix
+
 import json
 
 import datetime
@@ -16,6 +19,8 @@ import random
 random.seed(42)
 
 app = Flask(__name__)
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 
 ###############################################################################
 # DATA
